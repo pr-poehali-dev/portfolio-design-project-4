@@ -357,7 +357,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <ScrollReveal animation="slide-up">
-              <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-left">
                 {t.about.title}
               </h2>
             </ScrollReveal>
@@ -497,7 +497,7 @@ const Index = () => {
       <section id="навыки" className="bg-card relative z-10 py-[42px]">
         <div className="container mx-auto px-6">
           <ScrollReveal animation="slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-left">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-center">
               {t.skills.title}
             </h2>
           </ScrollReveal>
