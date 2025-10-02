@@ -346,7 +346,7 @@ const Index = () => {
       <section id="проекты" className="py-24 relative z-10">
         <div className="container mx-auto px-6">
           <ScrollReveal animation="slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-left">
               {t.portfolio.title}
             </h2>
           </ScrollReveal>
@@ -394,10 +394,10 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="навыки" className="py-24 bg-card relative z-10">
+      <section id="навыки" className="bg-card relative z-10 py-[42px]">
         <div className="container mx-auto px-6">
           <ScrollReveal animation="slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-left">
               {t.skills.title}
             </h2>
           </ScrollReveal>
@@ -565,7 +565,7 @@ const Index = () => {
 
       <section id="опыт" className="bg-card relative z-10 px-0 mx-0 my-0 py-6">
         <div className="container mx-auto px-[23px]">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-center">
             {t.experience.title}
           </h2>
           <div className="max-w-4xl mx-auto">
