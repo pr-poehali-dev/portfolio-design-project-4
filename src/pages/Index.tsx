@@ -328,7 +328,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="обо-мне" className="py-24 bg-card relative z-10">
+      <section id="обо-мне" className="bg-card relative z-10 py-[75px]">
         <div className="container mx-auto px-6">
           <ScrollReveal animation="slide-up">
             <div className="max-w-4xl mx-auto">
@@ -343,7 +343,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="проекты" className="py-24 relative z-10">
+      <section id="проекты" className="relative z-10 py-[55px]">
         <div className="container mx-auto px-6">
           <ScrollReveal animation="slide-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-left">
