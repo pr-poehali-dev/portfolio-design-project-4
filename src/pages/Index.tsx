@@ -95,7 +95,7 @@ const Index = () => {
         : 'Full-featured launcher with client interface and server-side, providing secure access to game content. Telegram bot integration',
       tags: ['C++', 'Python', 'Qt', 'Telegram API'],
       image: 'https://cdn.poehali.dev/files/e8baff31-aa0d-4067-a384-b328fb2f7f01.png',
-      mockupType: 'desktop' as const,
+      mockupType: 'browser' as const,
     },
     {
       title: language === 'ru' ? 'UI/UX меню для игры' : 'Game UI/UX Menu',
@@ -104,7 +104,7 @@ const Index = () => {
         : 'Innovative menu integrated into DWM for better performance. AntiScreen for protection and ImGui for customization',
       tags: ['C++', 'ImGui', 'DWM', 'AntiScreen'],
       image: 'https://cdn.poehali.dev/files/23fb4563-3ca1-4ec6-8b08-226fabd8f60a.png',
-      mockupType: 'desktop' as const,
+      mockupType: 'browser' as const,
     },
     {
       title: 'Prim-stone.ru',
@@ -363,8 +363,8 @@ const Index = () => {
             </ScrollReveal>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <ScrollReveal animation="slide-left">
-                <Card className="p-8 border-2 border-primary/20 hover:border-primary/40 transition-all group">
-                  <div className="space-y-6">
+                <div className="space-y-4">
+                  <Card className="p-8 border-2 border-primary/20 hover:border-primary/40 transition-all group">
                     <div className="flex items-start gap-4">
                       <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform">
                         <Icon name="Code2" className="text-primary" size={28} />
@@ -376,8 +376,19 @@ const Index = () => {
                         </p>
                       </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                  <Card className="p-6 border-2 border-accent/20 hover:border-accent/40 transition-all group">
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-accent/10 rounded-2xl group-hover:scale-110 transition-transform">
+                        <Icon name="MapPin" className="text-accent" size={32} />
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold">{t.home.location}</p>
+                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Местоположение' : 'Location'}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
               </ScrollReveal>
               <ScrollReveal animation="slide-right">
                 <div className="space-y-4">
