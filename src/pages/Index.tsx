@@ -14,6 +14,7 @@ import AnimatedProgressBar from '@/components/AnimatedProgressBar';
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
 
@@ -26,6 +27,7 @@ const Index = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
+    setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       const navHeight = 80;
@@ -234,7 +236,7 @@ const Index = () => {
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-gradient">
               MD
             </h1>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               <div className="hidden md:flex gap-8">
                 {navItems.map((item) => (
                   <button
@@ -267,9 +269,32 @@ const Index = () => {
                 >
                   {language === 'ru' ? 'EN' : 'RU'}
                 </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="md:hidden rounded-full"
+                >
+                  <Icon name={mobileMenuOpen ? "X" : "Menu"} size={24} />
+                </Button>
               </div>
             </div>
           </div>
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border animate-fade-in">
+              <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-left text-base font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
+                  >
+                    {t.nav[item.key as keyof typeof t.nav]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -522,23 +547,23 @@ const Index = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Soft Skills
-                </h2>
-                <div className="grid grid-cols-2 gap-4">
+                <ScrollReveal animation="slide-up">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Soft Skills
+                  </h2>
+                </ScrollReveal>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {softSkills.map((skill, idx) => (
-                    <Card
-                      key={idx}
-                      className="p-4 border-2 border-primary/20 hover:border-primary/40 transition-all animate-scale-in"
-                      style={{ animationDelay: `${idx * 0.1}s` }}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                          <Icon name={skill.icon as any} className="text-primary" size={20} />
+                    <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
+                      <Card className="p-5 border-2 border-primary/20 hover:border-primary/40 transition-all group">
+                        <div className="flex flex-col items-center text-center gap-3">
+                          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Icon name={skill.icon as any} className="text-primary" size={24} />
+                          </div>
+                          <p className="font-semibold text-sm leading-tight">{skill.name}</p>
                         </div>
-                        <p className="font-semibold text-sm">{skill.name}</p>
-                      </div>
-                    </Card>
+                      </Card>
+                    </ScrollReveal>
                   ))}
                 </div>
               </div>
