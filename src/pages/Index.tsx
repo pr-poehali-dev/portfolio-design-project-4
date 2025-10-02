@@ -13,6 +13,7 @@ import AnimatedProgressBar from '@/components/AnimatedProgressBar';
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
 
@@ -28,13 +29,32 @@ const Index = () => {
     const element = document.getElementById(id);
     if (element) {
       const navHeight = 80;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - navHeight;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = window.pageYOffset + elementPosition - navHeight;
+      
+      const startPosition = window.pageYOffset;
+      const distance = offsetPosition - startPosition;
+      const duration = 1000;
+      let start: number | null = null;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      const easeInOutCubic = (t: number): number => {
+        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      };
+
+      const animation = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startPosition + distance * ease);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+
+      requestAnimationFrame(animation);
     }
   };
 
@@ -196,8 +216,12 @@ const Index = () => {
 
   return (
     <>
-      <PageLoader />
-      <div className="min-h-screen bg-background relative">
+      <PageLoader onLoadComplete={() => setIsPageLoaded(true)} />
+      <div 
+        className={`min-h-screen bg-background relative transition-opacity duration-700 ${
+          isPageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
         <AnimatedBackground />
 
       <nav

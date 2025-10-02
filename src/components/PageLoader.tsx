@@ -1,20 +1,33 @@
 import { useState, useEffect } from 'react';
 
-const PageLoader = () => {
+interface PageLoaderProps {
+  onLoadComplete?: () => void;
+}
+
+const PageLoader = ({ onLoadComplete }: PageLoaderProps) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
+      setIsFadingOut(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        onLoadComplete?.();
+      }, 500);
     }, 1500);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [onLoadComplete]);
 
   if (!isLoading) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
+    <div 
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-background transition-opacity duration-500 ${
+        isFadingOut ? 'opacity-0' : 'opacity-100'
+      }`}
+    >
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent blur-3xl opacity-50 animate-pulse"></div>
         
