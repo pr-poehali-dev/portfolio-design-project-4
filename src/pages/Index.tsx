@@ -4,9 +4,13 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import Icon from '@/components/ui/icon';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,51 +34,33 @@ const Index = () => {
 
   const projects = [
     {
-      title: 'Digital Brand Experience',
-      description: 'Комплексный редизайн цифрового бренда для технологической компании',
       tags: ['UI/UX', 'Branding', 'Web'],
       image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
     },
     {
-      title: 'E-commerce Platform',
-      description: 'Создание современной платформы электронной коммерции с фокусом на UX',
       tags: ['Frontend', 'Design System', 'React'],
       image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
     },
     {
-      title: 'Mobile App Design',
-      description: 'Разработка интуитивного мобильного приложения для финтех стартапа',
       tags: ['Mobile', 'UI/UX', 'Prototyping'],
       image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
     },
   ];
 
-  const experience = [
-    {
-      year: '2023 - Настоящее время',
-      position: 'Senior Creative Director',
-      company: 'Digital Studio',
-      description: 'Руководство креативной командой, разработка стратегий брендинга',
-    },
-    {
-      year: '2020 - 2023',
-      position: 'Lead UI/UX Designer',
-      company: 'Tech Solutions',
-      description: 'Проектирование пользовательских интерфейсов для корпоративных продуктов',
-    },
-    {
-      year: '2018 - 2020',
-      position: 'Product Designer',
-      company: 'Startup Inc.',
-      description: 'Разработка дизайн-систем и прототипирование новых функций',
-    },
+  const navItems = [
+    { key: 'home', id: 'главная' },
+    { key: 'about', id: 'обо-мне' },
+    { key: 'portfolio', id: 'портфолио' },
+    { key: 'skills', id: 'навыки' },
+    { key: 'experience', id: 'опыт' },
+    { key: 'contacts', id: 'контакты' },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+          scrolled ? 'bg-background/80 backdrop-blur-lg shadow-sm' : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-6 py-4">
@@ -82,16 +68,40 @@ const Index = () => {
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               МР
             </h1>
-            <div className="hidden md:flex gap-8">
-              {['Главная', 'Обо мне', 'Портфолио', 'Навыки', 'Опыт', 'Контакты'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase().replace(/\s/g, '-'))}
-                  className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+            <div className="flex items-center gap-6">
+              <div className="hidden md:flex gap-8">
+                {navItems.map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                  >
+                    {t.nav[item.key as keyof typeof t.nav]}
+                  </button>
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleTheme}
+                  className="rounded-full"
                 >
-                  {item}
-                </button>
-              ))}
+                  {theme === 'light' ? (
+                    <Icon name="Moon" size={20} />
+                  ) : (
+                    <Icon name="Sun" size={20} />
+                  )}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={toggleLanguage}
+                  className="rounded-full font-semibold"
+                >
+                  {language === 'ru' ? 'EN' : 'RU'}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -107,17 +117,17 @@ const Index = () => {
             <div className="animate-fade-in-left">
               <div className="inline-block mb-4">
                 <Badge variant="secondary" className="text-sm px-4 py-2">
-                  Creative Portfolio
+                  {t.home.badge}
                 </Badge>
               </div>
               <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-                Дутчак <br />
+                {language === 'ru' ? 'Дутчак' : 'Dutchak'} <br />
                 <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Михаил Романович
+                  {t.home.name}
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Creative Director & UI/UX Designer
+                {t.home.title}
               </p>
               <div className="flex gap-4">
                 <Button
@@ -125,7 +135,7 @@ const Index = () => {
                   onClick={() => scrollToSection('портфолио')}
                   className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                 >
-                  Смотреть работы
+                  {t.home.viewWorks}
                   <Icon name="ArrowRight" className="ml-2" size={20} />
                 </Button>
                 <Button
@@ -133,7 +143,7 @@ const Index = () => {
                   variant="outline"
                   onClick={() => scrollToSection('контакты')}
                 >
-                  Связаться
+                  {t.home.contact}
                 </Button>
               </div>
             </div>
@@ -156,18 +166,15 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in">
-              Обо мне
+              {t.about.title}
             </h2>
             <div className="grid md:grid-cols-2 gap-8 animate-fade-in">
               <div>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Креативный директор с 7+ летним опытом в создании цифровых продуктов. 
-                  Специализируюсь на разработке уникальных пользовательских интерфейсов 
-                  и построении сильных брендов.
+                  {t.about.description1}
                 </p>
                 <p className="text-lg text-muted-foreground">
-                  Моя миссия — создавать дизайн, который не только красив, но и решает 
-                  реальные бизнес-задачи, улучшая опыт пользователей.
+                  {t.about.description2}
                 </p>
               </div>
               <div className="flex flex-col gap-4">
@@ -176,8 +183,8 @@ const Index = () => {
                     <Icon name="Award" className="text-primary" size={24} />
                   </div>
                   <div>
-                    <p className="font-semibold">50+ проектов</p>
-                    <p className="text-sm text-muted-foreground">Успешно реализовано</p>
+                    <p className="font-semibold">{t.about.projects}</p>
+                    <p className="text-sm text-muted-foreground">{t.about.projectsDesc}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -185,8 +192,8 @@ const Index = () => {
                     <Icon name="Users" className="text-secondary" size={24} />
                   </div>
                   <div>
-                    <p className="font-semibold">30+ клиентов</p>
-                    <p className="text-sm text-muted-foreground">По всему миру</p>
+                    <p className="font-semibold">{t.about.clients}</p>
+                    <p className="text-sm text-muted-foreground">{t.about.clientsDesc}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -194,8 +201,8 @@ const Index = () => {
                     <Icon name="Sparkles" className="text-accent" size={24} />
                   </div>
                   <div>
-                    <p className="font-semibold">15+ наград</p>
-                    <p className="text-sm text-muted-foreground">В дизайн-индустрии</p>
+                    <p className="font-semibold">{t.about.awards}</p>
+                    <p className="text-sm text-muted-foreground">{t.about.awardsDesc}</p>
                   </div>
                 </div>
               </div>
@@ -206,7 +213,7 @@ const Index = () => {
 
       <section id="портфолио" className="py-24">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in">Портфолио</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in">{t.portfolio.title}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, idx) => (
               <Card
@@ -217,14 +224,18 @@ const Index = () => {
                 <div className="relative overflow-hidden">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`Project ${idx + 1}`}
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
+                  <h3 className="text-xl font-bold mb-2">
+                    {idx === 0 ? t.portfolio.project1Title : idx === 1 ? t.portfolio.project2Title : t.portfolio.project3Title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {idx === 0 ? t.portfolio.project1Desc : idx === 1 ? t.portfolio.project2Desc : t.portfolio.project3Desc}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <Badge key={tag} variant="outline">
@@ -242,7 +253,7 @@ const Index = () => {
       <section id="навыки" className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in">Навыки</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in">{t.skills.title}</h2>
             <div className="space-y-8">
               {skills.map((skill, idx) => (
                 <div
@@ -264,32 +275,58 @@ const Index = () => {
 
       <section id="опыт" className="py-24">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in">Опыт работы</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in">{t.experience.title}</h2>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent" />
               <div className="space-y-12">
-                {experience.map((exp, idx) => (
-                  <div
-                    key={idx}
-                    className="relative pl-20 animate-fade-in-left"
-                    style={{ animationDelay: `${idx * 0.15}s` }}
-                  >
-                    <div className="absolute left-5 top-0 w-6 h-6 rounded-full bg-secondary border-4 border-background" />
-                    <Card className="hover:shadow-lg transition-shadow">
-                      <CardContent className="p-6">
-                        <div className="flex flex-wrap justify-between items-start mb-3">
-                          <div>
-                            <h3 className="text-xl font-bold mb-1">{exp.position}</h3>
-                            <p className="text-secondary font-semibold">{exp.company}</p>
-                          </div>
-                          <Badge variant="secondary">{exp.year}</Badge>
+                <div className="relative pl-20 animate-fade-in-left">
+                  <div className="absolute left-5 top-0 w-6 h-6 rounded-full bg-secondary border-4 border-background" />
+                  <Card className="hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="flex flex-wrap justify-between items-start mb-3">
+                        <div>
+                          <h3 className="text-xl font-bold mb-1">{t.experience.job1Position}</h3>
+                          <p className="text-secondary font-semibold">{t.experience.job1Company}</p>
                         </div>
-                        <p className="text-muted-foreground">{exp.description}</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
+                        <Badge variant="secondary">2023 - {t.experience.current}</Badge>
+                      </div>
+                      <p className="text-muted-foreground">{t.experience.job1Desc}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="relative pl-20 animate-fade-in-left" style={{ animationDelay: '0.15s' }}>
+                  <div className="absolute left-5 top-0 w-6 h-6 rounded-full bg-secondary border-4 border-background" />
+                  <Card className="hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="flex flex-wrap justify-between items-start mb-3">
+                        <div>
+                          <h3 className="text-xl font-bold mb-1">{t.experience.job2Position}</h3>
+                          <p className="text-secondary font-semibold">{t.experience.job2Company}</p>
+                        </div>
+                        <Badge variant="secondary">2020 - 2023</Badge>
+                      </div>
+                      <p className="text-muted-foreground">{t.experience.job2Desc}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="relative pl-20 animate-fade-in-left" style={{ animationDelay: '0.3s' }}>
+                  <div className="absolute left-5 top-0 w-6 h-6 rounded-full bg-secondary border-4 border-background" />
+                  <Card className="hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="flex flex-wrap justify-between items-start mb-3">
+                        <div>
+                          <h3 className="text-xl font-bold mb-1">{t.experience.job3Position}</h3>
+                          <p className="text-secondary font-semibold">{t.experience.job3Company}</p>
+                        </div>
+                        <Badge variant="secondary">2018 - 2020</Badge>
+                      </div>
+                      <p className="text-muted-foreground">{t.experience.job3Desc}</p>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
@@ -300,15 +337,15 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-              Давайте создадим что-то вместе
+              {t.contacts.title}
             </h2>
             <p className="text-xl text-muted-foreground mb-8 animate-fade-in">
-              Открыт для новых проектов и интересного сотрудничества
+              {t.contacts.subtitle}
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12 animate-scale-in">
               <Button size="lg" className="bg-secondary hover:bg-secondary/90">
                 <Icon name="Mail" className="mr-2" size={20} />
-                Email
+                {t.contacts.email}
               </Button>
               <Button size="lg" variant="outline">
                 <Icon name="Linkedin" className="mr-2" size={20} />
@@ -330,7 +367,7 @@ const Index = () => {
       <footer className="py-8 border-t">
         <div className="container mx-auto px-6 text-center">
           <p className="text-muted-foreground">
-            © 2024 Дутчак Михаил Романович. Все права защищены.
+            {t.footer.rights}
           </p>
         </div>
       </footer>
