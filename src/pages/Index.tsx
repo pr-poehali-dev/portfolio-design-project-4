@@ -6,6 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import Icon from '@/components/ui/icon';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import AnimatedBackground from '@/components/AnimatedBackground';
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -56,8 +57,26 @@ const Index = () => {
     { key: 'contacts', id: 'контакты' },
   ];
 
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>, cardRef: HTMLDivElement) => {
+    const rect = cardRef.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+    cardRef.style.setProperty('--rx', `${rotateX}deg`);
+    cardRef.style.setProperty('--ry', `${rotateY}deg`);
+  };
+
+  const handleCardMouseLeave = (cardRef: HTMLDivElement) => {
+    cardRef.style.setProperty('--rx', '0deg');
+    cardRef.style.setProperty('--ry', '0deg');
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <AnimatedBackground />
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? 'bg-background/80 backdrop-blur-lg shadow-sm' : 'bg-transparent'
@@ -111,7 +130,7 @@ const Index = () => {
         id="главная"
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 animate-gradient" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-left">
@@ -122,7 +141,7 @@ const Index = () => {
               </div>
               <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
                 {language === 'ru' ? 'Дутчак' : 'Dutchak'} <br />
-                <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-gradient">
                   {t.home.name}
                 </span>
               </h1>
@@ -133,7 +152,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   onClick={() => scrollToSection('портфолио')}
-                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+                  className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white shadow-lg shadow-primary/50 transition-all"
                 >
                   {t.home.viewWorks}
                   <Icon name="ArrowRight" className="ml-2" size={20} />
@@ -152,7 +171,7 @@ const Index = () => {
                 <img
                   src="/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg"
                   alt="Creative Hero"
-                  className="rounded-3xl shadow-2xl animate-float"
+                  className="rounded-3xl shadow-2xl shadow-primary/20 animate-float"
                 />
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent rounded-full blur-3xl opacity-50" />
                 <div className="absolute -top-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50" />
@@ -218,8 +237,10 @@ const Index = () => {
             {projects.map((project, idx) => (
               <Card
                 key={idx}
-                className="group overflow-hidden hover:shadow-2xl transition-all duration-300 animate-scale-in"
+                className="group overflow-hidden card-3d animate-scale-in border-2 border-primary/20"
                 style={{ animationDelay: `${idx * 0.1}s` }}
+                onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
+                onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -227,7 +248,7 @@ const Index = () => {
                     alt={`Project ${idx + 1}`}
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-secondary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-2">
@@ -265,7 +286,12 @@ const Index = () => {
                     <span className="font-semibold text-lg">{skill.name}</span>
                     <span className="text-muted-foreground">{skill.level}%</span>
                   </div>
-                  <Progress value={skill.level} className="h-3" />
+                  <div className="relative h-3 bg-muted rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-1000 ease-out"
+                      style={{ width: `${skill.level}%` }}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
