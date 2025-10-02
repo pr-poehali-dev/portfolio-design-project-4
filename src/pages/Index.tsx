@@ -17,6 +17,7 @@ const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [isModalClosing, setIsModalClosing] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
 
@@ -27,6 +28,14 @@ const Index = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (selectedProject !== null) {
+      setTimeout(() => setIsModalOpen(true), 10);
+    } else {
+      setIsModalOpen(false);
+    }
+  }, [selectedProject]);
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
@@ -800,7 +809,7 @@ const Index = () => {
       {selectedProject !== null && (
         <div 
           className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 ${
-            isModalClosing ? 'opacity-0' : 'opacity-100'
+            isModalOpen && !isModalClosing ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={() => {
             setIsModalClosing(true);
@@ -812,7 +821,7 @@ const Index = () => {
         >
           <div 
             className={`bg-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border-2 border-primary/30 shadow-2xl transition-all duration-300 ${
-              isModalClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
+              isModalOpen && !isModalClosing ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
             }`}
             onClick={(e) => e.stopPropagation()}
           >
