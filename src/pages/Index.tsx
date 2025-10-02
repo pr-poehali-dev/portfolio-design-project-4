@@ -410,7 +410,7 @@ const Index = () => {
                       <Icon name="Code" className="text-primary" size={32} />
                     </div>
                     <h3 className="text-xl font-bold">{t.skills.languages}</h3>
-                    <div className="flex flex-wrap gap-2 justify-center">
+                    <div className="flex flex-wrap gap-2 justify-center py-0 my-0 mx-0 px-0">
                       {techStack.languages.map((lang) => (
                         <Badge key={lang} variant="secondary" className="text-sm py-1.5 px-3">{lang}</Badge>
                       ))}
@@ -426,7 +426,7 @@ const Index = () => {
                       <Icon name="Database" className="text-accent" size={32} />
                     </div>
                     <h3 className="text-xl font-bold">{t.skills.databases}</h3>
-                    <div className="flex flex-wrap gap-2 justify-center">
+                    <div className="flex flex-wrap gap-2 justify-center mx-0 px-0 py-[39px] my-[1px]">
                       {techStack.databases.map((db) => (
                         <Badge key={db} variant="outline" className="text-sm py-1.5 px-3">{db}</Badge>
                       ))}
@@ -442,7 +442,7 @@ const Index = () => {
                       <Icon name="Wrench" className="text-secondary" size={32} />
                     </div>
                     <h3 className="text-xl font-bold">{t.skills.tools}</h3>
-                    <div className="flex flex-wrap gap-2 justify-center">
+                    <div className="flex flex-wrap gap-2 justify-center py-[19px]">
                       {techStack.tools.map((tool) => (
                         <Badge key={tool} variant="secondary" className="text-sm py-1.5 px-3">{tool}</Badge>
                       ))}
