@@ -159,7 +159,7 @@ const Index = () => {
       period: '2024 – н.в.',
       institution: language === 'ru' ? 'Дальневосточный федеральный университет' : 'Far Eastern Federal University',
       degree: language === 'ru' ? 'Прикладная информатика' : 'Applied Informatics',
-      description: language === 'ru' ? 'Разработка и управление цифровыми продуктами (1 курс)' : 'Development and management of digital products (1st year)',
+      description: language === 'ru' ? 'Разработка и управление цифровыми продуктами' : 'Development and management of digital products',
     },
     {
       period: '2020 – 2024',
