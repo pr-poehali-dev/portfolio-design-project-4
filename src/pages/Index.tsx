@@ -403,7 +403,7 @@ const Index = () => {
           </ScrollReveal>
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <ScrollReveal animation="slide-up" delay={100}>
-              <Card className="p-8 border-2 border-primary/20 hover:border-primary/40 transition-all">
+              <Card className="p-8 border-2 border-primary/20 hover:border-primary/40 transition-all h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-primary/10 rounded-lg">
                     <Icon name="Code" className="text-primary" size={28} />
@@ -419,7 +419,7 @@ const Index = () => {
             </ScrollReveal>
 
             <ScrollReveal animation="slide-up" delay={200}>
-              <Card className="p-8 border-2 border-secondary/20 hover:border-secondary/40 transition-all">
+              <Card className="p-8 border-2 border-secondary/20 hover:border-secondary/40 transition-all h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-secondary/10 rounded-lg">
                     <Icon name="Wrench" className="text-secondary" size={28} />
