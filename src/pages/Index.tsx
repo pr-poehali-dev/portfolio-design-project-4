@@ -353,18 +353,71 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="обо-мне" className="bg-card relative z-10 py-[75px]">
+      <section id="обо-мне" className="py-24 relative z-10">
         <div className="container mx-auto px-6">
-          <ScrollReveal animation="slide-up">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <div className="max-w-6xl mx-auto">
+            <ScrollReveal animation="slide-up">
+              <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-center">
                 {t.about.title}
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {t.about.description}
-              </p>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <ScrollReveal animation="slide-left">
+                <Card className="p-8 border-2 border-primary/20 hover:border-primary/40 transition-all group">
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 bg-primary/10 rounded-xl group-hover:scale-110 transition-transform">
+                        <Icon name="Code2" className="text-primary" size={28} />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">{language === 'ru' ? 'Full Stack разработчик' : 'Full Stack Developer'}</h3>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {t.about.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </ScrollReveal>
+              <ScrollReveal animation="slide-right">
+                <div className="space-y-4">
+                  <Card className="p-6 border-2 border-secondary/20 hover:border-secondary/40 transition-all group">
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-secondary/10 rounded-2xl group-hover:scale-110 transition-transform">
+                        <Icon name="Award" className="text-secondary" size={32} />
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold">{t.home.experience}</p>
+                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Опыт работы' : 'Work Experience'}</p>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card className="p-6 border-2 border-accent/20 hover:border-accent/40 transition-all group">
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-accent/10 rounded-2xl group-hover:scale-110 transition-transform">
+                        <Icon name="FolderGit2" className="text-accent" size={32} />
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold">{projects.length}+</p>
+                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Завершенных проектов' : 'Completed Projects'}</p>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-all group">
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-primary/10 rounded-2xl group-hover:scale-110 transition-transform">
+                        <Icon name="MapPin" className="text-primary" size={32} />
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold">{t.home.location}</p>
+                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Местоположение' : 'Location'}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -379,11 +432,11 @@ const Index = () => {
             {projects.map((project, idx) => (
               <ScrollReveal key={idx} animation="bounce" delay={idx * 100}>
                 <Card
-                  className="group overflow-hidden card-3d border-2 border-primary/20"
+                  className="group overflow-hidden card-3d border-2 border-primary/20 flex flex-col h-full"
                   onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
                   onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
                 >
-                <div className="relative overflow-hidden h-64">
+                <div className="relative overflow-hidden h-64 flex-shrink-0">
                   {project.mockupType ? (
                     <ProjectMockup 
                       image={project.image} 
@@ -401,10 +454,10 @@ const Index = () => {
                     </>
                   )}
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4 text-sm">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="text-muted-foreground mb-4 text-sm flex-grow">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tags.map((tag) => (
                       <Badge key={tag} variant="outline" className="text-xs">
                         {tag}
