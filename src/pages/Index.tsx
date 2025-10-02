@@ -43,7 +43,7 @@ const Index = () => {
         ? 'Автоматизированный магазин с бесшовной автопокупкой через YooMoney API, SQL базой данных, многоуровневой реферальной системой и административной панелью'
         : 'Automated store with seamless auto-purchase via YooMoney API, SQL database, multi-level referral system and admin panel',
       tags: ['Python', 'Aiogram', 'SQL', 'YooMoney API'],
-      image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
+      image: '/img/2b45bf4e-994a-4047-9bde-6e298dc38b0f.jpg',
     },
     {
       title: language === 'ru' ? 'Игровой лаунчер' : 'Game Launcher',
@@ -51,7 +51,7 @@ const Index = () => {
         ? 'Полнофункциональный лаунчер с клиентским интерфейсом и серверной частью, обеспечивающий безопасный доступ к игровому контенту. Интеграция с Telegram ботом'
         : 'Full-featured launcher with client interface and server-side, providing secure access to game content. Telegram bot integration',
       tags: ['C++', 'Python', 'Qt', 'Telegram API'],
-      image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
+      image: '/img/c7030622-f1f5-4641-bebb-b1652b7188ba.jpg',
     },
     {
       title: language === 'ru' ? 'UI/UX меню для игры' : 'Game UI/UX Menu',
@@ -59,7 +59,7 @@ const Index = () => {
         ? 'Инновационное меню, интегрированное в DWM для повышения производительности. Использованы AntiScreen для защиты и ImGui для кастомизации'
         : 'Innovative menu integrated into DWM for better performance. AntiScreen for protection and ImGui for customization',
       tags: ['C++', 'ImGui', 'DWM', 'AntiScreen'],
-      image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
+      image: '/img/4cad2367-f556-4b00-9d19-1f551c74d325.jpg',
     },
     {
       title: 'Prim-stone.ru',
@@ -67,7 +67,7 @@ const Index = () => {
         ? 'Сайт-визитка для онлайн-демонстрации каталога памятников и скульптур'
         : 'Landing page for online demonstration of monuments and sculptures catalog',
       tags: ['HTML', 'CSS', 'JavaScript'],
-      image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
+      image: 'https://cdn.poehali.dev/files/c1eae1f2-b150-4467-b960-c0f02cfdea24.png',
     },
     {
       title: 'вм.art',
@@ -75,7 +75,7 @@ const Index = () => {
         ? 'Онлайн-портфолио мебельной компании с автоматической генерацией 3D-моделей мебели с применением ИИ'
         : 'Online portfolio of furniture company with automatic 3D furniture model generation using AI',
       tags: ['Django', 'Python', 'AI', '3D', 'HTML', 'CSS'],
-      image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
+      image: 'https://cdn.poehali.dev/files/b0bf28a5-3a48-48af-b897-d2bf7195feaf.png',
     },
     {
       title: language === 'ru' ? 'API для работы с памятью' : 'Memory API',
@@ -83,7 +83,7 @@ const Index = () => {
         ? 'API для чтения/записи в память процесса и взаимодействия между пользователями. Безопасность через JWT и AES'
         : 'API for reading/writing to process memory and user interaction. Security via JWT and AES',
       tags: ['Python', 'FastAPI', 'JWT', 'AES', 'Security'],
-      image: '/img/2fefb855-23e1-411a-b966-d827fe5c44d5.jpg',
+      image: '/img/91852e78-b09c-4ac3-b75c-d78de450b2eb.jpg',
     },
   ];
 
@@ -119,6 +119,26 @@ const Index = () => {
       degree: language === 'ru' ? 'Дизайн' : 'Design',
       description: language === 'ru' ? 'Дизайн по отраслям' : 'Design by industry',
     },
+  ];
+
+  const softSkills = [
+    { name: language === 'ru' ? 'Командная работа' : 'Teamwork', icon: 'Users' },
+    { name: language === 'ru' ? 'Ответственность' : 'Responsibility', icon: 'Shield' },
+    { name: language === 'ru' ? 'Дисциплина' : 'Discipline', icon: 'Target' },
+    { name: language === 'ru' ? 'Решение проблем' : 'Problem Solving', icon: 'Lightbulb' },
+    { name: language === 'ru' ? 'Обучаемость' : 'Quick Learning', icon: 'BookOpen' },
+    { name: language === 'ru' ? 'Тайм-менеджмент' : 'Time Management', icon: 'Clock' },
+  ];
+
+  const hardSkills = [
+    { name: 'Full Stack Development', level: 90 },
+    { name: 'Python/Django', level: 95 },
+    { name: 'React/TypeScript', level: 88 },
+    { name: 'C++', level: 85 },
+    { name: 'UI/UX Design', level: 92 },
+    { name: 'Database Design', level: 87 },
+    { name: 'API Development', level: 90 },
+    { name: 'Security (JWT/AES)', level: 83 },
   ];
 
   const navItems = [
@@ -398,7 +418,63 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="опыт" className="py-24 relative z-10">
+      <section id="soft-hard-skills" className="py-24 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Soft Skills
+                </h2>
+                <div className="grid grid-cols-2 gap-4">
+                  {softSkills.map((skill, idx) => (
+                    <Card
+                      key={idx}
+                      className="p-4 border-2 border-primary/20 hover:border-primary/40 transition-all animate-scale-in"
+                      style={{ animationDelay: `${idx * 0.1}s` }}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                          <Icon name={skill.icon as any} className="text-primary" size={20} />
+                        </div>
+                        <p className="font-semibold text-sm">{skill.name}</p>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Hard Skills
+                </h2>
+                <div className="space-y-4">
+                  {hardSkills.map((skill, idx) => (
+                    <div
+                      key={idx}
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${idx * 0.1}s` }}
+                    >
+                      <div className="flex justify-between mb-2">
+                        <span className="font-semibold">{skill.name}</span>
+                        <span className="text-muted-foreground">{skill.level}%</span>
+                      </div>
+                      <div className="relative h-2 bg-muted rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-1000 ease-out"
+                          style={{ width: `${skill.level}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="опыт" className="py-24 bg-card relative z-10">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {t.experience.title}
