@@ -15,6 +15,7 @@ const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
 
@@ -78,6 +79,9 @@ const Index = () => {
     tags: string[];
     image: string;
     mockupType?: 'desktop' | 'browser' | 'mobile';
+    detailedDescription?: string;
+    link?: string;
+    linkType?: 'telegram' | 'website';
   }> = [
     {
       title: language === 'ru' ? 'Телеграм-бот магазин' : 'Telegram Bot Store',
@@ -87,6 +91,11 @@ const Index = () => {
       tags: ['Python', 'Aiogram', 'SQL', 'YooMoney API'],
       image: '/img/3753d4b5-b3ed-4b83-87da-934bc43a37db.jpg',
       mockupType: 'browser' as const,
+      detailedDescription: language === 'ru'
+        ? 'Полнофункциональный Telegram-бот для автоматизации продаж. Включает интеграцию с YooMoney API для автоматической обработки платежей, SQL базу данных для хранения информации о товарах и пользователях, многоуровневую реферальную систему для привлечения новых клиентов и удобную административную панель для управления магазином.'
+        : 'Full-featured Telegram bot for sales automation. Includes YooMoney API integration for automatic payment processing, SQL database for storing product and user information, multi-level referral system for attracting new customers, and convenient admin panel for store management.',
+      link: 'https://t.me/KamiPanelbot',
+      linkType: 'telegram' as const,
     },
     {
       title: language === 'ru' ? 'Игровой лаунчер' : 'Game Launcher',
@@ -96,6 +105,9 @@ const Index = () => {
       tags: ['C++', 'Python', 'Qt', 'Telegram API'],
       image: 'https://cdn.poehali.dev/files/e8baff31-aa0d-4067-a384-b328fb2f7f01.png',
       mockupType: 'browser' as const,
+      detailedDescription: language === 'ru'
+        ? 'Комплексное решение для запуска и управления игровым контентом. Разработан полностью на C++ с использованием Qt для создания современного пользовательского интерфейса. Серверная часть на Python обеспечивает безопасную авторизацию и управление контентом. Интеграция с Telegram API позволяет получать уведомления и управлять подпиской. Реализована система автоматического обновления и защита от несанкционированного доступа.'
+        : 'Comprehensive solution for launching and managing game content. Fully developed in C++ using Qt for modern UI. Python server-side ensures secure authentication and content management. Telegram API integration enables notifications and subscription management. Features automatic update system and protection against unauthorized access.',
     },
     {
       title: language === 'ru' ? 'UI/UX меню для игры' : 'Game UI/UX Menu',
@@ -105,6 +117,9 @@ const Index = () => {
       tags: ['C++', 'ImGui', 'DWM', 'AntiScreen'],
       image: 'https://cdn.poehali.dev/files/23fb4563-3ca1-4ec6-8b08-226fabd8f60a.png',
       mockupType: 'browser' as const,
+      detailedDescription: language === 'ru'
+        ? 'Высокопроизводительное игровое меню, созданное на C++ с использованием библиотеки ImGui для гибкой кастомизации интерфейса. Меню интегрировано в Desktop Window Manager (DWM) для максимальной производительности и плавности работы. Реализована система защиты AntiScreen, предотвращающая создание скриншотов и запись экрана во время использования. Включает продвинутую систему настроек, горячие клавиши и адаптивный дизайн.'
+        : 'High-performance game menu built with C++ using ImGui library for flexible UI customization. Menu integrated into Desktop Window Manager (DWM) for maximum performance and smooth operation. AntiScreen protection system prevents screenshots and screen recording during use. Features advanced settings system, hotkeys, and adaptive design.',
     },
     {
       title: 'Prim-stone.ru',
@@ -114,6 +129,11 @@ const Index = () => {
       tags: ['HTML', 'CSS', 'JavaScript'],
       image: 'https://cdn.poehali.dev/files/76ed6c4a-6fd4-444a-a637-3edb1f5e05a9.png',
       mockupType: 'browser' as const,
+      detailedDescription: language === 'ru'
+        ? 'Современный сайт-визитка для компании по производству памятников и скульптур. Адаптивный дизайн обеспечивает корректное отображение на всех устройствах. Реализована галерея работ с возможностью детального просмотра, форма обратной связи для заказов и система фильтрации каталога по категориям. Оптимизирован для быстрой загрузки и SEO.'
+        : 'Modern landing page for monuments and sculptures production company. Responsive design ensures correct display on all devices. Features work gallery with detailed view, contact form for orders, and catalog filtering system by categories. Optimized for fast loading and SEO.',
+      link: 'https://prim-stone.ru',
+      linkType: 'website' as const,
     },
     {
       title: 'вм.art',
@@ -123,6 +143,11 @@ const Index = () => {
       tags: ['Django', 'Python', 'AI', '3D', 'HTML', 'CSS'],
       image: 'https://cdn.poehali.dev/files/b0bf28a5-3a48-48af-b897-d2bf7195feaf.png',
       mockupType: 'browser' as const,
+      detailedDescription: language === 'ru'
+        ? 'Инновационная платформа для мебельной компании, построенная на Django. Главная особенность - автоматическая генерация 3D-моделей мебели с использованием искусственного интеллекта. Клиенты могут визуализировать мебель в своем интерьере, настраивать параметры и материалы в реальном времени. Включает каталог готовых решений, систему онлайн-заказов и личный кабинет для отслеживания заказов.'
+        : 'Innovative platform for furniture company built on Django. Main feature - automatic 3D furniture model generation using artificial intelligence. Clients can visualize furniture in their interior, customize parameters and materials in real-time. Includes catalog of ready solutions, online ordering system, and personal account for order tracking.',
+      link: 'https://вм.art',
+      linkType: 'website' as const,
     },
     {
       title: language === 'ru' ? 'API для работы с памятью' : 'Memory API',
@@ -132,6 +157,9 @@ const Index = () => {
       tags: ['Python', 'FastAPI', 'JWT', 'AES', 'Security'],
       image: '/img/9016f003-7fff-440e-ae16-89392c2297a8.jpg',
       mockupType: 'browser' as const,
+      detailedDescription: language === 'ru'
+        ? 'Высокопроизводительное API, разработанное на FastAPI для безопасной работы с памятью процессов. Реализована система аутентификации на основе JWT токенов и шифрование данных с использованием AES алгоритма. API обеспечивает чтение и запись в память процессов, синхронизацию данных между пользователями и защиту от несанкционированного доступа. Включает документацию OpenAPI и систему логирования всех операций.'
+        : 'High-performance API built with FastAPI for secure process memory operations. Features JWT token-based authentication and AES data encryption. API provides process memory read/write, user data synchronization, and protection against unauthorized access. Includes OpenAPI documentation and comprehensive operation logging system.',
     },
   ];
 
@@ -454,9 +482,10 @@ const Index = () => {
             {projects.map((project, idx) => (
               <ScrollReveal key={idx} animation="bounce" delay={idx * 100}>
                 <Card
-                  className="group overflow-hidden card-3d border-2 border-primary/20 flex flex-col h-full"
+                  className="group overflow-hidden card-3d border-2 border-primary/20 flex flex-col h-full cursor-pointer"
                   onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
                   onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
+                  onClick={() => setSelectedProject(idx)}
                 >
                 <div className="relative overflow-hidden h-64 flex-shrink-0">
                   {project.mockupType ? (
@@ -766,6 +795,75 @@ const Index = () => {
         </div>
       </section>
       </div>
+
+      {selectedProject !== null && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div 
+            className="bg-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border-2 border-primary/30 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+              {projects[selectedProject].mockupType ? (
+                <ProjectMockup 
+                  image={projects[selectedProject].image} 
+                  title={projects[selectedProject].title}
+                  type={projects[selectedProject].mockupType}
+                />
+              ) : (
+                <img
+                  src={projects[selectedProject].image}
+                  alt={projects[selectedProject].title}
+                  className="w-full h-full object-cover"
+                />
+              )}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 p-2 bg-background/80 backdrop-blur-sm rounded-full hover:bg-background transition-colors"
+              >
+                <Icon name="X" size={24} />
+              </button>
+            </div>
+            
+            <div className="p-8">
+              <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                {projects[selectedProject].title}
+              </h2>
+              
+              <div className="flex flex-wrap gap-2 mb-6">
+                {projects[selectedProject].tags.map((tag) => (
+                  <Badge key={tag} variant="outline">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+              
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                {projects[selectedProject].detailedDescription || projects[selectedProject].description}
+              </p>
+              
+              {projects[selectedProject].link && (
+                <Button
+                  className="w-full md:w-auto"
+                  onClick={() => window.open(projects[selectedProject].link, '_blank')}
+                >
+                  <Icon 
+                    name={projects[selectedProject].linkType === 'telegram' ? 'Send' : 'ExternalLink'} 
+                    size={20} 
+                    className="mr-2"
+                  />
+                  {projects[selectedProject].linkType === 'telegram' 
+                    ? (language === 'ru' ? 'Открыть в Telegram' : 'Open in Telegram')
+                    : (language === 'ru' ? 'Перейти на сайт' : 'Visit Website')
+                  }
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
