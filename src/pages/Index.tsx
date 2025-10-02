@@ -395,22 +395,33 @@ const Index = () => {
                   <Card className="p-6 border-2 border-accent/20 hover:border-accent/40 transition-all group">
                     <div className="flex items-center gap-4">
                       <div className="p-4 bg-accent/10 rounded-2xl group-hover:scale-110 transition-transform">
-                        <Icon name="FolderGit2" className="text-accent" size={32} />
+                        <Icon name="ShoppingCart" className="text-accent" size={32} />
                       </div>
                       <div>
-                        <p className="text-2xl font-bold">{projects.length}+</p>
-                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Завершенных проектов' : 'Completed Projects'}</p>
+                        <p className="text-2xl font-bold">50+</p>
+                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Завершенных заказов' : 'Completed Orders'}</p>
                       </div>
                     </div>
                   </Card>
                   <Card className="p-6 border-2 border-primary/20 hover:border-primary/40 transition-all group">
                     <div className="flex items-center gap-4">
                       <div className="p-4 bg-primary/10 rounded-2xl group-hover:scale-110 transition-transform">
-                        <Icon name="MapPin" className="text-primary" size={32} />
+                        <Icon name="Users" className="text-primary" size={32} />
                       </div>
                       <div>
-                        <p className="text-2xl font-bold">{t.home.location}</p>
-                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Местоположение' : 'Location'}</p>
+                        <p className="text-2xl font-bold">6+</p>
+                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Проектов с командой' : 'Team Projects'}</p>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card className="p-6 border-2 border-secondary/20 hover:border-secondary/40 transition-all group">
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-secondary/10 rounded-2xl group-hover:scale-110 transition-transform">
+                        <Icon name="User" className="text-secondary" size={32} />
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold">2+</p>
+                        <p className="text-sm text-muted-foreground">{language === 'ru' ? 'Соло проектов' : 'Solo Projects'}</p>
                       </div>
                     </div>
                   </Card>
