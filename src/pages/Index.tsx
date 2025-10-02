@@ -401,100 +401,115 @@ const Index = () => {
               {t.skills.title}
             </h2>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <ScrollReveal animation="slide-up" delay={100}>
+          <div className="space-y-6 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-6">
+              <ScrollReveal animation="slide-up" delay={100}>
+                <Card className="p-8 border-2 border-primary/20 hover:border-primary/40 transition-all group">
+                  <div className="flex flex-col items-center text-center gap-4">
+                    <div className="p-4 bg-primary/10 rounded-2xl group-hover:scale-110 transition-transform">
+                      <Icon name="Code" className="text-primary" size={32} />
+                    </div>
+                    <h3 className="text-xl font-bold">{t.skills.languages}</h3>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {techStack.languages.map((lang) => (
+                        <Badge key={lang} variant="secondary" className="text-sm py-1.5 px-3">{lang}</Badge>
+                      ))}
+                    </div>
+                  </div>
+                </Card>
+              </ScrollReveal>
+
+              <ScrollReveal animation="slide-up" delay={200}>
+                <Card className="p-8 border-2 border-accent/20 hover:border-accent/40 transition-all group">
+                  <div className="flex flex-col items-center text-center gap-4">
+                    <div className="p-4 bg-accent/10 rounded-2xl group-hover:scale-110 transition-transform">
+                      <Icon name="Database" className="text-accent" size={32} />
+                    </div>
+                    <h3 className="text-xl font-bold">{t.skills.databases}</h3>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {techStack.databases.map((db) => (
+                        <Badge key={db} variant="outline" className="text-sm py-1.5 px-3">{db}</Badge>
+                      ))}
+                    </div>
+                  </div>
+                </Card>
+              </ScrollReveal>
+
+              <ScrollReveal animation="slide-up" delay={300}>
+                <Card className="p-8 border-2 border-secondary/20 hover:border-secondary/40 transition-all group">
+                  <div className="flex flex-col items-center text-center gap-4">
+                    <div className="p-4 bg-secondary/10 rounded-2xl group-hover:scale-110 transition-transform">
+                      <Icon name="Wrench" className="text-secondary" size={32} />
+                    </div>
+                    <h3 className="text-xl font-bold">{t.skills.tools}</h3>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {techStack.tools.map((tool) => (
+                        <Badge key={tool} variant="secondary" className="text-sm py-1.5 px-3">{tool}</Badge>
+                      ))}
+                    </div>
+                  </div>
+                </Card>
+              </ScrollReveal>
+            </div>
+
+            <ScrollReveal animation="slide-up" delay={400}>
               <Card className="p-8 border-2 border-primary/20 hover:border-primary/40 transition-all">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Icon name="Code" className="text-primary" size={28} />
-                  </div>
-                  <h3 className="text-2xl font-bold">{t.skills.languages}</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {techStack.languages.map((lang) => (
-                    <Badge key={lang} variant="secondary" className="text-base py-1.5 px-3">{lang}</Badge>
-                  ))}
-                </div>
-              </Card>
-            </ScrollReveal>
-
-            <ScrollReveal animation="slide-up" delay={200}>
-              <Card className="p-8 border-2 border-secondary/20 hover:border-secondary/40 transition-all">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-secondary/10 rounded-lg">
-                    <Icon name="Wrench" className="text-secondary" size={28} />
-                  </div>
-                  <h3 className="text-2xl font-bold">{t.skills.tools}</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {techStack.tools.map((tool) => (
-                    <Badge key={tool} variant="outline" className="text-base py-1.5 px-3">{tool}</Badge>
-                  ))}
-                </div>
-              </Card>
-            </ScrollReveal>
-
-            <ScrollReveal animation="slide-up" delay={300}>
-              <Card className="p-8 border-2 border-accent/20 hover:border-accent/40 transition-all md:col-span-2">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-accent/10 rounded-lg">
-                    <Icon name="Package" className="text-accent" size={28} />
+                <div className="flex items-center gap-3 mb-8 justify-center">
+                  <div className="p-4 bg-primary/10 rounded-2xl">
+                    <Icon name="Package" className="text-primary" size={32} />
                   </div>
                   <h3 className="text-2xl font-bold">{t.skills.frameworks}</h3>
                 </div>
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div>
-                    <p className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">Python</p>
-                    <div className="flex flex-wrap gap-2">
+                <div className="grid md:grid-cols-3 gap-8">
+                  <div className="text-center">
+                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-primary/5 rounded-full">
+                      <Icon name="Code2" className="text-primary" size={18} />
+                      <p className="text-sm font-bold uppercase tracking-wide">Python</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 justify-center">
                       {techStack.frameworks.python.map((fw) => (
-                        <Badge key={fw} variant="outline" className="text-sm py-1 px-2.5">{fw}</Badge>
+                        <Badge key={fw} variant="outline" className="text-sm py-1.5 px-3">{fw}</Badge>
                       ))}
                     </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">JavaScript/TypeScript</p>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="text-center">
+                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-secondary/5 rounded-full">
+                      <Icon name="Zap" className="text-secondary" size={18} />
+                      <p className="text-sm font-bold uppercase tracking-wide">JavaScript/TypeScript</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 justify-center">
                       {techStack.frameworks.js.map((fw) => (
-                        <Badge key={fw} variant="outline" className="text-sm py-1 px-2.5">{fw}</Badge>
+                        <Badge key={fw} variant="outline" className="text-sm py-1.5 px-3">{fw}</Badge>
                       ))}
                     </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">{language === 'ru' ? 'Технологии' : 'Technologies'}</p>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="text-center">
+                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-accent/5 rounded-full">
+                      <Icon name="Sparkles" className="text-accent" size={18} />
+                      <p className="text-sm font-bold uppercase tracking-wide">{language === 'ru' ? 'Технологии' : 'Technologies'}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 justify-center">
                       {techStack.frameworks.other.map((tech) => (
-                        <Badge key={tech} variant="outline" className="text-sm py-1 px-2.5">{tech}</Badge>
+                        <Badge key={tech} variant="outline" className="text-sm py-1.5 px-3">{tech}</Badge>
                       ))}
                     </div>
                   </div>
-                </div>
-              </Card>
-            </ScrollReveal>
-
-            <ScrollReveal animation="slide-up" delay={400}>
-              <Card className="p-6 border-2 border-secondary/20">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Icon name="Palette" className="text-secondary" size={24} />
-                  {t.skills.uiux}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {techStack.design.map((tool) => (
-                    <Badge key={tool} variant="outline">{tool}</Badge>
-                  ))}
                 </div>
               </Card>
             </ScrollReveal>
 
             <ScrollReveal animation="slide-up" delay={500}>
-              <Card className="p-6 border-2 border-primary/20">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Icon name="Database" className="text-primary" size={24} />
-                  {t.skills.databases}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {techStack.databases.map((db) => (
-                    <Badge key={db} variant="secondary">{db}</Badge>
-                  ))}
+              <Card className="p-8 border-2 border-secondary/20 hover:border-secondary/40 transition-all group">
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="p-4 bg-secondary/10 rounded-2xl group-hover:scale-110 transition-transform">
+                    <Icon name="Palette" className="text-secondary" size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold">{t.skills.uiux}</h3>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {techStack.design.map((tool) => (
+                      <Badge key={tool} variant="outline" className="text-sm py-1.5 px-3">{tool}</Badge>
+                    ))}
+                  </div>
                 </div>
               </Card>
             </ScrollReveal>
