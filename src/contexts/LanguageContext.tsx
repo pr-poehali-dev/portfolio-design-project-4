@@ -69,7 +69,7 @@ const translations: Record<Language, Translations> = {
     home: {
       name: 'Михаил Дутчак',
       title: 'Full Stack Developer',
-      subtitle: 'Опыт работы: 3.5 года',
+      subtitle: 'Создаю высокопроизводительные веб-приложения',
       experience: '3.5 года опыта',
       location: 'Владивосток, Россия',
       age: '21 год',
@@ -81,7 +81,7 @@ const translations: Record<Language, Translations> = {
       description: 'Full Stack разработчик с опытом работы более трех лет, нацеленный на создание высокопроизводительных и масштабируемых веб-приложений. Обладаю опытом работы с различными базами данных, включая MySQL и PostgreSQL, и глубоким пониманием принципов UI/UX дизайна. Успешно реализовал проекты, включающие интеграцию со сторонними API, такими как YooMoney. Ориентирован на результат, стремлюсь к постоянному профессиональному росту и изучению новых технологий.',
     },
     portfolio: {
-      title: 'Пет-проекты',
+      title: 'Портфолио',
     },
     skills: {
       title: 'Технологический стек',
@@ -121,7 +121,7 @@ const translations: Record<Language, Translations> = {
     home: {
       name: 'Mikhail Dutchak',
       title: 'Full Stack Developer',
-      subtitle: 'Experience: 3.5 years',
+      subtitle: 'Building high-performance web applications',
       experience: '3.5 years of experience',
       location: 'Vladivostok, Russia',
       age: '21 years old',
@@ -133,7 +133,7 @@ const translations: Record<Language, Translations> = {
       description: 'Full Stack developer with over three years of experience, focused on creating high-performance and scalable web applications. I have experience working with various databases, including MySQL and PostgreSQL, and a deep understanding of UI/UX design principles. Successfully implemented projects including integration with third-party APIs such as YooMoney. Result-oriented, striving for continuous professional growth and learning new technologies.',
     },
     portfolio: {
-      title: 'Pet Projects',
+      title: 'Portfolio',
     },
     skills: {
       title: 'Technology Stack',
