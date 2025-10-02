@@ -361,7 +361,7 @@ const Index = () => {
                 {t.about.title}
               </h2>
             </ScrollReveal>
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <ScrollReveal animation="slide-left">
                 <div className="space-y-4">
                   <Card className="p-8 border-2 border-primary/20 hover:border-primary/40 transition-all group">
