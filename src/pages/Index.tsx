@@ -542,8 +542,8 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="опыт" className="py-24 bg-card relative z-10">
-        <div className="container mx-auto px-6">
+      <section id="опыт" className="bg-card relative z-10 px-0 mx-0 my-0 py-6">
+        <div className="container mx-auto px-[23px]">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {t.experience.title}
           </h2>
@@ -578,8 +578,8 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="образование" className="py-24 bg-card relative z-10">
-        <div className="container mx-auto px-6">
+      <section id="образование" className="bg-card relative z-10 py-0">
+        <div className="container px-6 my-0 py-[41px] mx-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {t.education.title}
           </h2>
