@@ -2,7 +2,7 @@ import { useEffect, useRef, ReactNode } from 'react';
 
 interface ScrollRevealProps {
   children: ReactNode;
-  animation?: 'fade' | 'slide-up' | 'slide-down' | 'bounce' | 'scale';
+  animation?: 'fade' | 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right' | 'bounce' | 'scale';
   delay?: number;
   className?: string;
 }
@@ -44,9 +44,11 @@ const ScrollReveal = ({
     'fade': 'animate-fade-in',
     'slide-up': 'animate-slide-up',
     'slide-down': 'animate-slide-down',
+    'slide-left': 'animate-fade-in-left',
+    'slide-right': 'animate-fade-in-right',
     'bounce': 'animate-bounce-in',
     'scale': 'animate-scale-in'
-  }[animation];
+  }[animation] || 'animate-fade-in';
 
   return (
     <div
@@ -61,7 +63,7 @@ const ScrollReveal = ({
           opacity: 1 !important;
         }
         .revealed > * {
-          animation: ${animationClass.replace('animate-', '')} 0.6s ease-out forwards;
+          animation: ${animationClass?.replace('animate-', '') || 'fade-in'} 0.6s ease-out forwards;
         }
       `}</style>
       {children}
