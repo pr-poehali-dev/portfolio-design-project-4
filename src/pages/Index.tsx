@@ -472,6 +472,20 @@ const Index = () => {
             </ScrollReveal>
 
             <ScrollReveal animation="slide-up" delay={400}>
+              <Card className="p-6 border-2 border-secondary/20">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <Icon name="Palette" className="text-secondary" size={24} />
+                  {t.skills.uiux}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {techStack.design.map((tool) => (
+                    <Badge key={tool} variant="outline">{tool}</Badge>
+                  ))}
+                </div>
+              </Card>
+            </ScrollReveal>
+
+            <ScrollReveal animation="slide-up" delay={500}>
               <Card className="p-6 border-2 border-primary/20">
                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                   <Icon name="Database" className="text-primary" size={24} />
@@ -480,20 +494,6 @@ const Index = () => {
                 <div className="flex flex-wrap gap-2">
                   {techStack.databases.map((db) => (
                     <Badge key={db} variant="secondary">{db}</Badge>
-                  ))}
-                </div>
-              </Card>
-            </ScrollReveal>
-
-            <ScrollReveal animation="slide-up" delay={500}>
-              <Card className="p-6 border-2 border-secondary/20 md:col-span-2">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Icon name="Palette" className="text-secondary" size={24} />
-                  {t.skills.uiux}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {techStack.design.map((tool) => (
-                    <Badge key={tool} variant="outline">{tool}</Badge>
                   ))}
                 </div>
               </Card>
