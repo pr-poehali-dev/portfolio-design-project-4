@@ -16,6 +16,7 @@ const Index = () => {
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [isModalClosing, setIsModalClosing] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
 
@@ -798,11 +799,21 @@ const Index = () => {
 
       {selectedProject !== null && (
         <div 
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedProject(null)}
+          className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 ${
+            isModalClosing ? 'opacity-0' : 'opacity-100'
+          }`}
+          onClick={() => {
+            setIsModalClosing(true);
+            setTimeout(() => {
+              setSelectedProject(null);
+              setIsModalClosing(false);
+            }, 300);
+          }}
         >
           <div 
-            className="bg-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border-2 border-primary/30 shadow-2xl"
+            className={`bg-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border-2 border-primary/30 shadow-2xl transition-all duration-300 ${
+              isModalClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
@@ -820,7 +831,13 @@ const Index = () => {
                 />
               )}
               <button
-                onClick={() => setSelectedProject(null)}
+                onClick={() => {
+                  setIsModalClosing(true);
+                  setTimeout(() => {
+                    setSelectedProject(null);
+                    setIsModalClosing(false);
+                  }, 300);
+                }}
                 className="absolute top-4 right-4 p-2 bg-background/80 backdrop-blur-sm rounded-full hover:bg-background transition-colors"
               >
                 <Icon name="X" size={24} />
