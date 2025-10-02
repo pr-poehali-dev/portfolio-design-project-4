@@ -401,23 +401,23 @@ const Index = () => {
               {t.skills.title}
             </h2>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <ScrollReveal animation="slide-up" delay={100}>
-              <Card className="p-6 border-2 border-primary/20">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <Icon name="Code" className="text-primary" size={24} />
-                {t.skills.languages}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {techStack.languages.map((lang) => (
-                  <Badge key={lang} variant="secondary">{lang}</Badge>
-                ))}
-              </div>
-            </Card>
+              <Card className="p-6 border-2 border-primary/20 h-full">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <Icon name="Code" className="text-primary" size={24} />
+                  {t.skills.languages}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {techStack.languages.map((lang) => (
+                    <Badge key={lang} variant="secondary">{lang}</Badge>
+                  ))}
+                </div>
+              </Card>
             </ScrollReveal>
 
             <ScrollReveal animation="slide-up" delay={200}>
-              <Card className="p-6 border-2 border-secondary/20">
+              <Card className="p-6 border-2 border-secondary/20 md:col-span-2 lg:col-span-1 h-full">
                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                   <Icon name="Package" className="text-secondary" size={24} />
                   {t.skills.frameworks}
@@ -452,7 +452,7 @@ const Index = () => {
             </ScrollReveal>
 
             <ScrollReveal animation="slide-up" delay={300}>
-              <Card className="p-6 border-2 border-accent/20">
+              <Card className="p-6 border-2 border-accent/20 h-full">
                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                   <Icon name="Wrench" className="text-accent" size={24} />
                   {t.skills.tools}
