@@ -7,6 +7,8 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import ProjectMockup from '@/components/ProjectMockup';
+import ScrollReveal from '@/components/ScrollReveal';
+import PageLoader from '@/components/PageLoader';
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -50,7 +52,8 @@ const Index = () => {
         ? 'Автоматизированный магазин с бесшовной автопокупкой через YooMoney API, SQL базой данных, многоуровневой реферальной системой и административной панелью'
         : 'Automated store with seamless auto-purchase via YooMoney API, SQL database, multi-level referral system and admin panel',
       tags: ['Python', 'Aiogram', 'SQL', 'YooMoney API'],
-      image: '/img/2b45bf4e-994a-4047-9bde-6e298dc38b0f.jpg',
+      image: '/img/3753d4b5-b3ed-4b83-87da-934bc43a37db.jpg',
+      mockupType: 'mobile' as const,
     },
     {
       title: language === 'ru' ? 'Игровой лаунчер' : 'Game Launcher',
@@ -76,7 +79,7 @@ const Index = () => {
         ? 'Сайт-визитка для онлайн-демонстрации каталога памятников и скульптур'
         : 'Landing page for online demonstration of monuments and sculptures catalog',
       tags: ['HTML', 'CSS', 'JavaScript'],
-      image: 'https://cdn.poehali.dev/files/c1eae1f2-b150-4467-b960-c0f02cfdea24.png',
+      image: 'https://cdn.poehali.dev/files/76ed6c4a-6fd4-444a-a637-3edb1f5e05a9.png',
       mockupType: 'browser' as const,
     },
     {
@@ -94,7 +97,8 @@ const Index = () => {
         ? 'API для чтения/записи в память процесса и взаимодействия между пользователями. Безопасность через JWT и AES'
         : 'API for reading/writing to process memory and user interaction. Security via JWT and AES',
       tags: ['Python', 'FastAPI', 'JWT', 'AES', 'Security'],
-      image: '/img/344309b2-cf82-4c1b-b27f-2b21f055e2d7.jpg',
+      image: '/img/9016f003-7fff-440e-ae16-89392c2297a8.jpg',
+      mockupType: 'browser' as const,
     },
   ];
 
@@ -180,8 +184,10 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <AnimatedBackground />
+    <>
+      <PageLoader />
+      <div className="min-h-screen bg-background relative">
+        <AnimatedBackground />
 
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -289,31 +295,34 @@ const Index = () => {
 
       <section id="обо-мне" className="py-24 bg-card relative z-10">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              {t.about.title}
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed animate-fade-in">
-              {t.about.description}
-            </p>
-          </div>
+          <ScrollReveal animation="slide-up">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                {t.about.title}
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {t.about.description}
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section id="проекты" className="py-24 relative z-10">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            {t.portfolio.title}
-          </h2>
+          <ScrollReveal animation="slide-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              {t.portfolio.title}
+            </h2>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, idx) => (
-              <Card
-                key={idx}
-                className="group overflow-hidden card-3d animate-scale-in border-2 border-primary/20"
-                style={{ animationDelay: `${idx * 0.1}s` }}
-                onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
-                onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
-              >
+              <ScrollReveal key={idx} animation="bounce" delay={idx * 100}>
+                <Card
+                  className="group overflow-hidden card-3d border-2 border-primary/20"
+                  onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
+                  onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
+                >
                 <div className="relative overflow-hidden h-64">
                   {project.mockupType ? (
                     <ProjectMockup 
@@ -344,6 +353,7 @@ const Index = () => {
                   </div>
                 </CardContent>
               </Card>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -351,11 +361,14 @@ const Index = () => {
 
       <section id="навыки" className="py-24 bg-card relative z-10">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            {t.skills.title}
-          </h2>
+          <ScrollReveal animation="slide-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              {t.skills.title}
+            </h2>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <Card className="p-6 border-2 border-primary/20">
+            <ScrollReveal animation="slide-up" delay={100}>
+              <Card className="p-6 border-2 border-primary/20">
               <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <Icon name="Code" className="text-primary" size={24} />
                 {t.skills.languages}
@@ -366,8 +379,10 @@ const Index = () => {
                 ))}
               </div>
             </Card>
+            </ScrollReveal>
 
-            <Card className="p-6 border-2 border-secondary/20">
+            <ScrollReveal animation="slide-up" delay={200}>
+              <Card className="p-6 border-2 border-secondary/20">
               <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <Icon name="Package" className="text-secondary" size={24} />
                 {t.skills.frameworks}
@@ -583,15 +598,8 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      <footer className="py-8 border-t relative z-10">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-muted-foreground">
-            {t.footer.rights}
-          </p>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 };
 

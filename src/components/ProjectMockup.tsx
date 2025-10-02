@@ -8,15 +8,15 @@ const ProjectMockup = ({ image, title, type = 'browser' }: ProjectMockupProps) =
   if (type === 'desktop') {
     return (
       <div className="relative w-full group">
-        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-t-lg p-3 flex items-center gap-2">
+        <div className="bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 rounded-t-lg p-3 flex items-center gap-2">
           <div className="flex gap-1.5">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
-          <div className="flex-1 text-center text-sm text-gray-400">{title}</div>
+          <div className="flex-1 text-center text-sm text-gray-600 dark:text-gray-400">{title}</div>
         </div>
-        <div className="relative overflow-hidden rounded-b-lg bg-gray-900">
+        <div className="relative overflow-hidden rounded-b-lg bg-white dark:bg-gray-900">
           <img
             src={image}
             alt={title}
