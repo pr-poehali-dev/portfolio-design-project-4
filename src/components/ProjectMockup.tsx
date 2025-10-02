@@ -7,7 +7,7 @@ interface ProjectMockupProps {
 const ProjectMockup = ({ image, title, type = 'browser' }: ProjectMockupProps) => {
   if (type === 'desktop') {
     return (
-      <div className="relative w-full">
+      <div className="relative w-full group">
         <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-t-lg p-3 flex items-center gap-2">
           <div className="flex gap-1.5">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -20,8 +20,9 @@ const ProjectMockup = ({ image, title, type = 'browser' }: ProjectMockupProps) =
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-secondary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
       </div>
     );
@@ -29,7 +30,7 @@ const ProjectMockup = ({ image, title, type = 'browser' }: ProjectMockupProps) =
 
   if (type === 'browser') {
     return (
-      <div className="relative w-full">
+      <div className="relative w-full group">
         <div className="bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 rounded-t-xl p-3 flex items-center gap-3">
           <div className="flex gap-1.5">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -47,25 +48,27 @@ const ProjectMockup = ({ image, title, type = 'browser' }: ProjectMockupProps) =
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-secondary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full max-w-sm mx-auto">
+    <div className="relative w-full max-w-sm mx-auto group">
       <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
-        <div className="bg-black rounded-[2rem] overflow-hidden">
+        <div className="bg-black rounded-[2rem] overflow-hidden relative">
           <div className="h-6 bg-black flex items-center justify-center">
             <div className="w-20 h-5 bg-gray-900 rounded-b-2xl"></div>
           </div>
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-secondary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
       </div>
     </div>
