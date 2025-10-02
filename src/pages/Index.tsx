@@ -9,6 +9,7 @@ import AnimatedBackground from '@/components/AnimatedBackground';
 import ProjectMockup from '@/components/ProjectMockup';
 import ScrollReveal from '@/components/ScrollReveal';
 import PageLoader from '@/components/PageLoader';
+import AnimatedProgressBar from '@/components/AnimatedProgressBar';
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -24,7 +25,17 @@ const Index = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(id);
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   const techStack = {
@@ -53,7 +64,7 @@ const Index = () => {
         : 'Automated store with seamless auto-purchase via YooMoney API, SQL database, multi-level referral system and admin panel',
       tags: ['Python', 'Aiogram', 'SQL', 'YooMoney API'],
       image: '/img/3753d4b5-b3ed-4b83-87da-934bc43a37db.jpg',
-      mockupType: 'mobile' as const,
+      mockupType: 'browser' as const,
     },
     {
       title: language === 'ru' ? 'Игровой лаунчер' : 'Game Launcher',
@@ -493,22 +504,12 @@ const Index = () => {
                 </h2>
                 <div className="space-y-4">
                   {hardSkills.map((skill, idx) => (
-                    <div
+                    <AnimatedProgressBar
                       key={idx}
-                      className="animate-fade-in"
-                      style={{ animationDelay: `${idx * 0.1}s` }}
-                    >
-                      <div className="flex justify-between mb-2">
-                        <span className="font-semibold">{skill.name}</span>
-                        <span className="text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <div className="relative h-2 bg-muted rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-1000 ease-out"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-                    </div>
+                      name={skill.name}
+                      level={skill.level}
+                      delay={idx * 100}
+                    />
                   ))}
                 </div>
               </div>
