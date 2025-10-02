@@ -6,6 +6,7 @@ import Icon from '@/components/ui/icon';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedBackground from '@/components/AnimatedBackground';
+import ProjectMockup from '@/components/ProjectMockup';
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -36,7 +37,13 @@ const Index = () => {
     design: ['Figma', 'CorelDraw', 'Photoshop', '3DS Max', 'Blender', 'Archicad', 'Autocad'],
   };
 
-  const projects = [
+  const projects: Array<{
+    title: string;
+    description: string;
+    tags: string[];
+    image: string;
+    mockupType?: 'desktop' | 'browser' | 'mobile';
+  }> = [
     {
       title: language === 'ru' ? 'Телеграм-бот магазин' : 'Telegram Bot Store',
       description: language === 'ru' 
@@ -51,7 +58,8 @@ const Index = () => {
         ? 'Полнофункциональный лаунчер с клиентским интерфейсом и серверной частью, обеспечивающий безопасный доступ к игровому контенту. Интеграция с Telegram ботом'
         : 'Full-featured launcher with client interface and server-side, providing secure access to game content. Telegram bot integration',
       tags: ['C++', 'Python', 'Qt', 'Telegram API'],
-      image: '/img/c7030622-f1f5-4641-bebb-b1652b7188ba.jpg',
+      image: 'https://cdn.poehali.dev/files/e8baff31-aa0d-4067-a384-b328fb2f7f01.png',
+      mockupType: 'desktop' as const,
     },
     {
       title: language === 'ru' ? 'UI/UX меню для игры' : 'Game UI/UX Menu',
@@ -59,7 +67,8 @@ const Index = () => {
         ? 'Инновационное меню, интегрированное в DWM для повышения производительности. Использованы AntiScreen для защиты и ImGui для кастомизации'
         : 'Innovative menu integrated into DWM for better performance. AntiScreen for protection and ImGui for customization',
       tags: ['C++', 'ImGui', 'DWM', 'AntiScreen'],
-      image: '/img/4cad2367-f556-4b00-9d19-1f551c74d325.jpg',
+      image: 'https://cdn.poehali.dev/files/23fb4563-3ca1-4ec6-8b08-226fabd8f60a.png',
+      mockupType: 'desktop' as const,
     },
     {
       title: 'Prim-stone.ru',
@@ -68,6 +77,7 @@ const Index = () => {
         : 'Landing page for online demonstration of monuments and sculptures catalog',
       tags: ['HTML', 'CSS', 'JavaScript'],
       image: 'https://cdn.poehali.dev/files/c1eae1f2-b150-4467-b960-c0f02cfdea24.png',
+      mockupType: 'browser' as const,
     },
     {
       title: 'вм.art',
@@ -76,6 +86,7 @@ const Index = () => {
         : 'Online portfolio of furniture company with automatic 3D furniture model generation using AI',
       tags: ['Django', 'Python', 'AI', '3D', 'HTML', 'CSS'],
       image: 'https://cdn.poehali.dev/files/b0bf28a5-3a48-48af-b897-d2bf7195feaf.png',
+      mockupType: 'browser' as const,
     },
     {
       title: language === 'ru' ? 'API для работы с памятью' : 'Memory API',
@@ -83,7 +94,7 @@ const Index = () => {
         ? 'API для чтения/записи в память процесса и взаимодействия между пользователями. Безопасность через JWT и AES'
         : 'API for reading/writing to process memory and user interaction. Security via JWT and AES',
       tags: ['Python', 'FastAPI', 'JWT', 'AES', 'Security'],
-      image: '/img/91852e78-b09c-4ac3-b75c-d78de450b2eb.jpg',
+      image: '/img/344309b2-cf82-4c1b-b27f-2b21f055e2d7.jpg',
     },
   ];
 
@@ -303,13 +314,23 @@ const Index = () => {
                 onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
                 onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
               >
-                <div className="relative overflow-hidden h-48">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-secondary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative overflow-hidden h-64">
+                  {project.mockupType ? (
+                    <ProjectMockup 
+                      image={project.image} 
+                      title={project.title}
+                      type={project.mockupType}
+                    />
+                  ) : (
+                    <>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-secondary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </>
+                  )}
                 </div>
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
