@@ -841,7 +841,7 @@ const Index = () => {
               <Button size="lg" variant="outline" asChild>
                 <a href="https://vladivostok.hh.ru/profile/me?hhtmFrom=ProfileActivator" target="_blank" rel="noopener noreferrer">
                   <Icon name="Briefcase" className="mr-2" size={20} />
-                  hh.ru
+                  {language === 'ru' ? 'Я на hh.ru' : 'My hh.ru'}
                 </a>
               </Button>
               <Button size="lg" variant="default" asChild className="bg-gradient-to-r from-accent to-primary hover:opacity-90">
