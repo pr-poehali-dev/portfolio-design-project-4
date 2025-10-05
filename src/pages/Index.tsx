@@ -845,7 +845,7 @@ const Index = () => {
                 </a>
               </Button>
               <Button size="lg" variant="default" asChild className="bg-gradient-to-r from-accent to-primary hover:opacity-90">
-                <a href="https://s552vla.storage.yandex.net/rdisk/698b87f38ec4cc6456f2b5e16dc0d5c9083eea1c4d9e96cfe7d3b0effc018f3a/68e2775e/ql58dIBT9epgos7ZcNM27uU4_Xr1kwyjFi8hq-OVrE5FhEFMtMFXbUCANpg_pedomcKIb5MZwktAhMNrbtwN3g==?uid=0&filename=%D0%A0%D0%B5%D0%B7%D1%8E%D0%BC%D0%B5%20%D0%B4%D1%83%D1%82%D1%87%D0%B0%D0%BA%20%D0%BC.%D1%80.pdf&disposition=attachment&hash=iu03HTfNZ/pozk9SejHlgDScIY6WkRj%2Bhk93WRbqRaLa6/5PRDF16jwo9aI3CgGeq/J6bpmRyOJonT3VoXnDag%3D%3D&limit=0&content_type=application%2Fpdf&owner_uid=918794027&fsize=528383&hid=c0b1a592aa908869f6600a43d8bcad03&media_type=document&tknv=v3&ts=6406999e61380&s=dc1f3a6caa8d774126d599a03cdd414689c9f1bd4774059b33b5316ede459957&pb=U2FsdGVkX1-W3jNu0ThBsXVArxDXmATM95OGAoLWYI4Q6Sh3IhkBgVaHsGBpLutmlwlvA5qL1S7zYMbFqLiGWJ8r_8XF3u-geFnUkMu0lkE" download>
+                <a href="https://docviewer.yandex.ru/?url=ya-disk-public%3A%2F%2Fiu03HTfNZ%2Fpozk9SejHlgDScIY6WkRj%2Bhk93WRbqRaLa6%2F5PRDF16jwo9aI3CgGeq%2FJ6bpmRyOJonT3VoXnDag%3D%3D&name=Резюме%20дутчак%20м.р.pdf" target="_blank" rel="noopener noreferrer">
                   <Icon name="Download" className="mr-2" size={20} />
                   {language === 'ru' ? 'Скачать резюме' : 'Download CV'}
                 </a>
