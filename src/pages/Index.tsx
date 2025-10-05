@@ -132,20 +132,6 @@ const Index = () => {
         : 'High-performance game menu built with C++ using ImGui library for flexible UI customization. Menu integrated into Desktop Window Manager (DWM) for maximum performance and smooth operation. AntiScreen protection system prevents screenshots and screen recording during use. Features advanced settings system, hotkeys, and adaptive design.',
     },
     {
-      title: 'Prim-stone.ru',
-      description: language === 'ru'
-        ? 'Сайт-визитка для онлайн-демонстрации каталога памятников и скульптур'
-        : 'Landing page for online demonstration of monuments and sculptures catalog',
-      tags: ['HTML', 'CSS', 'JavaScript'],
-      image: 'https://cdn.poehali.dev/files/76ed6c4a-6fd4-444a-a637-3edb1f5e05a9.png',
-      mockupType: 'browser' as const,
-      detailedDescription: language === 'ru'
-        ? 'Современный сайт-визитка для компании по производству памятников и скульптур. Адаптивный дизайн обеспечивает корректное отображение на всех устройствах. Реализована галерея работ с возможностью детального просмотра, форма обратной связи для заказов и система фильтрации каталога по категориям. Оптимизирован для быстрой загрузки и SEO.'
-        : 'Modern landing page for monuments and sculptures production company. Responsive design ensures correct display on all devices. Features work gallery with detailed view, contact form for orders, and catalog filtering system by categories. Optimized for fast loading and SEO.',
-      link: 'https://prim-stone.ru',
-      linkType: 'website' as const,
-    },
-    {
       title: 'вм.art',
       description: language === 'ru'
         ? 'Онлайн-портфолио мебельной компании с автоматической генерацией 3D-моделей мебели с применением ИИ'
