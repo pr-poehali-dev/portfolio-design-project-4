@@ -151,13 +151,65 @@ const Index = () => {
         ? 'Онлайн-портфолио мебельной компании с автоматической генерацией 3D-моделей мебели с применением ИИ'
         : 'Online portfolio of furniture company with automatic 3D furniture model generation using AI',
       tags: ['Django', 'Python', 'AI', '3D', 'HTML', 'CSS'],
-      image: 'https://cdn.poehali.dev/files/b0bf28a5-3a48-48af-b897-d2bf7195feaf.png',
+      image: '/img/d4c92eac-1bbb-4ff8-9e92-f3212a5fcea3.jpg',
       mockupType: 'browser' as const,
       detailedDescription: language === 'ru'
         ? 'Инновационная платформа для мебельной компании, построенная на Django. Главная особенность - автоматическая генерация 3D-моделей мебели с использованием искусственного интеллекта. Клиенты могут визуализировать мебель в своем интерьере, настраивать параметры и материалы в реальном времени. Включает каталог готовых решений, систему онлайн-заказов и личный кабинет для отслеживания заказов.'
         : 'Innovative platform for furniture company built on Django. Main feature - automatic 3D furniture model generation using artificial intelligence. Clients can visualize furniture in their interior, customize parameters and materials in real-time. Includes catalog of ready solutions, online ordering system, and personal account for order tracking.',
       link: 'https://вм.art',
       linkType: 'website' as const,
+    },
+    {
+      title: 'stalcraft-cheat.ru',
+      description: language === 'ru'
+        ? 'Сайт-магазин игрового вспомогательного ПО с системой лицензирования и автоматической доставкой'
+        : 'Gaming assistance software store with licensing system and automatic delivery',
+      tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+      image: '/img/91caeb94-a87f-4624-a81d-873613f7d1c5.jpg',
+      mockupType: 'browser' as const,
+      detailedDescription: language === 'ru'
+        ? 'Профессиональный интернет-магазин игрового программного обеспечения. Реализована система автоматической выдачи лицензий после оплаты, интеграция с платежными системами, личный кабинет пользователя для управления подписками. Включает систему защиты от пиратства, автоматическое обновление клиентов и техническую поддержку через Telegram. Адаптивный дизайн с игровой тематикой и оптимизация для быстрой загрузки.'
+        : 'Professional gaming software online store. Features automatic license delivery after payment, payment system integration, user dashboard for subscription management. Includes anti-piracy protection, automatic client updates, and Telegram technical support. Responsive gaming-themed design optimized for fast loading.',
+      link: 'https://stalcraft-cheat.ru',
+      linkType: 'website' as const,
+    },
+    {
+      title: 'tehpromgroup.com',
+      description: language === 'ru'
+        ? 'Корпоративный сайт промышленной компании с каталогом оборудования и системой заявок'
+        : 'Corporate website for industrial company with equipment catalog and request system',
+      tags: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+      image: '/img/a92e844d-f36c-4acb-aebf-bf86edcf9127.jpg',
+      mockupType: 'browser' as const,
+      detailedDescription: language === 'ru'
+        ? 'Современный корпоративный сайт для промышленной компании ТехПромГрупп. Включает подробный каталог промышленного оборудования с техническими характеристиками, систему фильтрации и поиска, форму онлайн-заявок на оборудование. Реализован раздел с проектами компании, новостями отрасли и контактной информацией. Адаптивный дизайн обеспечивает корректное отображение на всех устройствах. Оптимизирован для поисковых систем.'
+        : 'Modern corporate website for TehPromGroup industrial company. Features detailed industrial equipment catalog with technical specifications, filtering and search system, online equipment request form. Includes company projects section, industry news, and contact information. Responsive design ensures proper display on all devices. SEO optimized.',
+      link: 'https://tehpromgroup.com/',
+      linkType: 'website' as const,
+    },
+    {
+      title: language === 'ru' ? 'Работа с Syscall на C++' : 'C++ Syscall Operations',
+      description: language === 'ru'
+        ? 'Низкоуровневая библиотека для прямого взаимодействия с ядром ОС через системные вызовы. Обход пользовательского режима'
+        : 'Low-level library for direct OS kernel interaction via syscalls. Usermode bypass techniques',
+      tags: ['C++', 'Assembly', 'Syscall', 'Kernel', 'WinAPI'],
+      image: '/img/912d0cbc-fb5e-429d-bb6b-ba1d4fab7f73.jpg',
+      mockupType: 'desktop' as const,
+      detailedDescription: language === 'ru'
+        ? 'Продвинутая библиотека на C++ для работы напрямую с системными вызовами операционной системы. Позволяет обходить стандартные API функции и взаимодействовать с ядром на низком уровне. Реализованы техники прямого вызова NT-функций, обход хуков безопасности, работа с недокументированными системными вызовами. Включает инструменты для анализа и модификации системных структур данных. Применяется в задачах информационной безопасности и разработке системного ПО.'
+        : 'Advanced C++ library for direct OS syscall operations. Enables bypassing standard API functions and low-level kernel interaction. Implemented direct NT-function calling techniques, security hook bypass, undocumented syscall operations. Includes tools for analyzing and modifying system data structures. Used in infosec and system software development.',
+    },
+    {
+      title: language === 'ru' ? 'Игровое вспомогательное ПО' : 'Game Assistance Software',
+      description: language === 'ru'
+        ? 'Разработка дополнительного ПО с работой с памятью процессов, инъекциями DLL и анализом игровых структур'
+        : 'Development of assistance software with process memory manipulation, DLL injection and game structure analysis',
+      tags: ['C++', 'Memory', 'DLL Injection', 'Reverse Engineering'],
+      image: '/img/bd951f8a-5a6d-4701-b46d-2e2c515480a6.jpg',
+      mockupType: 'desktop' as const,
+      detailedDescription: language === 'ru'
+        ? 'Комплексное программное решение для анализа и модификации игровых процессов. Включает продвинутую работу с памятью: чтение и запись в адресное пространство процесса, поиск паттернов и сигнатур, анализ игровых структур данных. Реализованы техники DLL-инъекций, хуки функций, детектирование античитов. Разработан модульный движок для создания игровых модификаций. Применяются методы обратной разработки для исследования игровых механик. Используется для образовательных целей в области информационной безопасности.'
+        : 'Comprehensive software solution for game process analysis and modification. Features advanced memory operations: reading/writing to process address space, pattern and signature scanning, game data structure analysis. Implemented DLL injection techniques, function hooks, anti-cheat detection. Developed modular engine for game modifications. Applied reverse engineering methods for game mechanics research. Used for educational purposes in information security field.',
     },
     {
       title: language === 'ru' ? 'API для работы с памятью' : 'Memory API',
