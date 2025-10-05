@@ -88,7 +88,6 @@ const Index = () => {
     description: string;
     tags: string[];
     image: string;
-    mobileImage?: string;
     mockupType?: 'desktop' | 'browser' | 'mobile';
     detailedDescription?: string;
     link?: string;
@@ -138,8 +137,7 @@ const Index = () => {
         ? 'Онлайн-портфолио мебельной компании с автоматической генерацией 3D-моделей мебели с применением ИИ'
         : 'Online portfolio of furniture company with automatic 3D furniture model generation using AI',
       tags: ['Django', 'Python', 'AI', '3D', 'HTML', 'CSS'],
-      image: 'https://cdn.poehali.dev/files/23810f1c-0e3c-4691-a291-93194735c8a8.png',
-      mobileImage: 'https://cdn.poehali.dev/files/b3a06fcc-c9fd-4d1b-a1f0-6ffa2d3415a9.png',
+      image: 'https://cdn.poehali.dev/files/7389fb3d-08ea-4a72-b4d0-55ea594d068c.png',
       mockupType: 'browser' as const,
       detailedDescription: language === 'ru'
         ? 'Инновационная платформа для мебельной компании, построенная на Django. Главная особенность - автоматическая генерация 3D-моделей мебели с использованием искусственного интеллекта. Клиенты могут визуализировать мебель в своем интерьере, настраивать параметры и материалы в реальном времени. Включает каталог готовых решений, систему онлайн-заказов и личный кабинет для отслеживания заказов.'
@@ -153,8 +151,7 @@ const Index = () => {
         ? 'Сайт-магазин игрового вспомогательного ПО с системой лицензирования и автоматической доставкой'
         : 'Gaming assistance software store with licensing system and automatic delivery',
       tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-      image: 'https://cdn.poehali.dev/files/f1a6cf58-948c-4860-ac37-c5210da77b4e.png',
-      mobileImage: 'https://cdn.poehali.dev/files/7fcf3920-2746-4f5a-ab6d-31ac4ca1fc8d.png',
+      image: 'https://cdn.poehali.dev/files/b3739ec0-481d-4965-8c19-d156a01625a1.png',
       mockupType: 'browser' as const,
       detailedDescription: language === 'ru'
         ? 'Профессиональный интернет-магазин игрового программного обеспечения. Реализована система автоматической выдачи лицензий после оплаты, интеграция с платежными системами, личный кабинет пользователя для управления подписками. Включает систему защиты от пиратства, автоматическое обновление клиентов и техническую поддержку через Telegram. Адаптивный дизайн с игровой тематикой и оптимизация для быстрой загрузки.'
@@ -168,7 +165,7 @@ const Index = () => {
         ? 'Корпоративный сайт промышленной компании с каталогом оборудования и системой заявок'
         : 'Corporate website for industrial company with equipment catalog and request system',
       tags: ['HTML', 'CSS', 'JavaScript', 'PHP'],
-      image: 'https://cdn.poehali.dev/files/e16c60c2-e84c-47db-aea1-70660b3e8c0c.png',
+      image: 'https://cdn.poehali.dev/files/3d52180f-d167-47c5-ae1a-f8887d2853d4.png',
       mockupType: 'browser' as const,
       detailedDescription: language === 'ru'
         ? 'Современный корпоративный сайт для промышленной компании ТехПромГрупп. Включает подробный каталог промышленного оборудования с техническими характеристиками, систему фильтрации и поиска, форму онлайн-заявок на оборудование. Реализован раздел с проектами компании, новостями отрасли и контактной информацией. Адаптивный дизайн обеспечивает корректное отображение на всех устройствах. Оптимизирован для поисковых систем.'
@@ -538,7 +535,7 @@ const Index = () => {
                   onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
                   onClick={() => setSelectedProject(idx)}
                 >
-                <div className="relative overflow-hidden h-64 flex-shrink-0">
+                <div className="relative overflow-hidden aspect-video flex-shrink-0">
                   {project.mockupType ? (
                     <ProjectMockup 
                       image={project.image} 
@@ -867,26 +864,7 @@ const Index = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative overflow-hidden rounded-t-2xl">
-              {projects[selectedProject].mobileImage ? (
-                <div className="grid md:grid-cols-2 gap-4 p-4 bg-muted/30">
-                  <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground text-center font-medium">Desktop</p>
-                    <img
-                      src={projects[selectedProject].image}
-                      alt={`${projects[selectedProject].title} - Desktop`}
-                      className="w-full rounded-lg border-2 border-primary/20"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground text-center font-medium">Mobile</p>
-                    <img
-                      src={projects[selectedProject].mobileImage}
-                      alt={`${projects[selectedProject].title} - Mobile`}
-                      className="w-full rounded-lg border-2 border-primary/20"
-                    />
-                  </div>
-                </div>
-              ) : projects[selectedProject].mockupType ? (
+              {projects[selectedProject].mockupType ? (
                 <div className="h-64 md:h-80">
                   <ProjectMockup 
                     image={projects[selectedProject].image} 
