@@ -191,19 +191,19 @@ const Index = () => {
         ? 'Разработка дополнительного ПО с работой с памятью процессов, инъекциями DLL и анализом игровых структур'
         : 'Development of assistance software with process memory manipulation, DLL injection and game structure analysis',
       tags: ['C++', 'Memory', 'DLL Injection', 'Reverse Engineering'],
-      image: '/img/bd951f8a-5a6d-4701-b46d-2e2c515480a6.jpg',
+      image: 'https://cdn.poehali.dev/files/7bb9f7a4-0a23-4c9c-ba7e-096a6f016f00.png',
       mockupType: 'desktop' as const,
       detailedDescription: language === 'ru'
         ? 'Комплексное программное решение для анализа и модификации игровых процессов. Включает продвинутую работу с памятью: чтение и запись в адресное пространство процесса, поиск паттернов и сигнатур, анализ игровых структур данных. Реализованы техники DLL-инъекций, хуки функций, детектирование античитов. Разработан модульный движок для создания игровых модификаций. Применяются методы обратной разработки для исследования игровых механик. Используется для образовательных целей в области информационной безопасности.'
         : 'Comprehensive software solution for game process analysis and modification. Features advanced memory operations: reading/writing to process address space, pattern and signature scanning, game data structure analysis. Implemented DLL injection techniques, function hooks, anti-cheat detection. Developed modular engine for game modifications. Applied reverse engineering methods for game mechanics research. Used for educational purposes in information security field.',
     },
     {
-      title: language === 'ru' ? 'API для работы с памятью' : 'Memory API',
+      title: language === 'ru' ? 'PyMemoryApi' : 'PyMemoryApi',
       description: language === 'ru'
-        ? 'API для чтения/записи в память процесса и взаимодействия между пользователями. Безопасность через JWT и AES'
-        : 'API for reading/writing to process memory and user interaction. Security via JWT and AES',
+        ? 'REST API для чтения/записи в память процесса и взаимодействия между пользователями. Безопасность через JWT и AES'
+        : 'REST API for reading/writing to process memory and user interaction. Security via JWT and AES',
       tags: ['Python', 'FastAPI', 'JWT', 'AES', 'Security'],
-      image: '/img/9016f003-7fff-440e-ae16-89392c2297a8.jpg',
+      image: '/img/a79f1624-cd97-4c8d-b600-773b9bdda48b.jpg',
       mockupType: 'browser' as const,
       detailedDescription: language === 'ru'
         ? 'Высокопроизводительное API, разработанное на FastAPI для безопасной работы с памятью процессов. Реализована система аутентификации на основе JWT токенов и шифрование данных с использованием AES алгоритма. API обеспечивает чтение и запись в память процессов, синхронизацию данных между пользователями и защиту от несанкционированного доступа. Включает документацию OpenAPI и систему логирования всех операций.'
