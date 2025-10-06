@@ -816,50 +816,104 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <ScrollReveal animation="slide-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center">
-              {language === 'ru' ? 'Мой проект' : 'My Project'}
+              {language === 'ru' ? 'Мой пет-проект' : 'My Pet Project'}
             </h2>
             <p className="text-xl text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
               {language === 'ru' ? 'Крипмечник — мой Telegram-канал о криптовалютах и трейдинге' : 'Kripme4nik — my Telegram channel about crypto and trading'}
             </p>
           </ScrollReveal>
           
-          <div className="max-w-4xl mx-auto">
-            <ScrollReveal animation="slide-up" delay={100}>
-              <Card className="overflow-hidden border-2 border-accent/30 hover:border-accent/50 transition-all">
-                <div className="p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-4 bg-accent/10 rounded-2xl">
-                      <Icon name="Send" className="text-accent" size={32} />
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <ScrollReveal animation="slide-left" delay={100}>
+                <Card className="overflow-hidden border-2 border-accent/30 hover:border-accent/50 transition-all sticky top-24">
+                  <div className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-4 bg-accent/10 rounded-2xl">
+                        <Icon name="Send" className="text-accent" size={32} />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold mb-1">Крипмечник</h3>
+                        <a 
+                          href="https://t.me/Kripme4nik" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-accent hover:underline flex items-center gap-2"
+                        >
+                          @Kripme4nik
+                          <Icon name="ExternalLink" size={16} />
+                        </a>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-bold mb-1">Крипмечник</h3>
-                      <a 
-                        href="https://t.me/Kripme4nik" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-accent hover:underline flex items-center gap-2"
-                      >
-                        @Kripme4nik
-                        <Icon name="ExternalLink" size={16} />
-                      </a>
+                    
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {language === 'ru' 
+                        ? 'Публикую аналитику рынка криптовалют, торговые сигналы и образовательный контент для трейдеров.'
+                        : 'I publish crypto market analytics, trading signals and educational content for traders.'}
+                    </p>
+                    
+                    <div className="space-y-4 mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-primary/10 rounded-lg">
+                          <Icon name="TrendingUp" className="text-primary" size={20} />
+                        </div>
+                        <span className="text-sm">{language === 'ru' ? 'Технический анализ' : 'Technical Analysis'}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-secondary/10 rounded-lg">
+                          <Icon name="Target" className="text-secondary" size={20} />
+                        </div>
+                        <span className="text-sm">{language === 'ru' ? 'Торговые сигналы' : 'Trading Signals'}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-accent/10 rounded-lg">
+                          <Icon name="BookOpen" className="text-accent" size={20} />
+                        </div>
+                        <span className="text-sm">{language === 'ru' ? 'Обучающие материалы' : 'Educational Content'}</span>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="bg-muted/50 rounded-2xl p-6 mb-6">
-                    <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="Kripme4nik/1" data-width="100%"></script>
-                  </div>
-                  
-                  <div className="flex justify-center">
-                    <Button size="lg" asChild className="bg-gradient-to-r from-accent to-primary hover:opacity-90 text-white">
+                    
+                    <Button size="lg" asChild className="w-full bg-gradient-to-r from-accent to-primary hover:opacity-90 text-white">
                       <a href="https://t.me/Kripme4nik" target="_blank" rel="noopener noreferrer">
                         {language === 'ru' ? 'Подписаться на канал' : 'Subscribe to Channel'}
                         <Icon name="ArrowRight" className="ml-2" size={20} />
                       </a>
                     </Button>
                   </div>
+                </Card>
+              </ScrollReveal>
+              
+              <ScrollReveal animation="slide-right" delay={200}>
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <Icon name="MessageSquare" className="text-accent" size={28} />
+                    {language === 'ru' ? 'Последние посты' : 'Latest Posts'}
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all">
+                      <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="Kripme4nik/1" data-width="100%"></script>
+                    </div>
+                    
+                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all">
+                      <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="Kripme4nik/2" data-width="100%"></script>
+                    </div>
+                    
+                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all">
+                      <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="Kripme4nik/3" data-width="100%"></script>
+                    </div>
+                  </div>
+                  
+                  <Card className="p-6 bg-gradient-to-br from-accent/5 to-primary/5 border-2 border-accent/20">
+                    <p className="text-center text-sm text-muted-foreground">
+                      {language === 'ru' 
+                        ? '💡 Посты обновляются автоматически из Telegram-канала'
+                        : '💡 Posts are automatically updated from the Telegram channel'}
+                    </p>
+                  </Card>
                 </div>
-              </Card>
-            </ScrollReveal>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
