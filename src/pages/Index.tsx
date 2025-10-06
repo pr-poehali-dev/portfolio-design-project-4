@@ -10,7 +10,6 @@ import ProjectMockup from '@/components/ProjectMockup';
 import ScrollReveal from '@/components/ScrollReveal';
 import PageLoader from '@/components/PageLoader';
 import AnimatedProgressBar from '@/components/AnimatedProgressBar';
-import TelegramPost from '@/components/TelegramPost';
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -888,29 +887,119 @@ const Index = () => {
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <Icon name="MessageSquare" className="text-accent" size={28} />
-                    {language === 'ru' ? 'Последние посты' : 'Latest Posts'}
+                    {language === 'ru' ? 'Активность канала' : 'Channel Activity'}
                   </h3>
                   
                   <div className="space-y-4">
-                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all p-4">
-                      <TelegramPost channel="Kripme4nik" postId={1} />
-                    </div>
+                    <Card className="group hover:shadow-xl transition-all duration-300 border-2 border-accent/20 hover:border-accent/50 bg-gradient-to-br from-card via-accent/5 to-card overflow-hidden">
+                      <a href="https://t.me/Kripme4nik" target="_blank" rel="noopener noreferrer" className="block p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="p-3 bg-accent/20 rounded-xl group-hover:scale-110 transition-transform">
+                            <Icon name="TrendingUp" className="text-accent" size={24} />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Badge variant="secondary" className="text-xs">
+                                {language === 'ru' ? 'Аналитика' : 'Analytics'}
+                              </Badge>
+                              <span className="text-xs text-muted-foreground">
+                                {language === 'ru' ? 'Недавно' : 'Recent'}
+                              </span>
+                            </div>
+                            <h4 className="font-bold text-lg mb-2 group-hover:text-accent transition-colors">
+                              {language === 'ru' ? 'Технический анализ BTC/USD' : 'BTC/USD Technical Analysis'}
+                            </h4>
+                            <p className="text-sm text-muted-foreground line-clamp-2">
+                              {language === 'ru' 
+                                ? 'Разбор текущей ситуации на рынке Bitcoin, уровни поддержки и сопротивления...'
+                                : 'Analysis of the current Bitcoin market situation, support and resistance levels...'}
+                            </p>
+                          </div>
+                          <Icon name="ExternalLink" className="text-muted-foreground group-hover:text-accent transition-colors" size={20} />
+                        </div>
+                      </a>
+                    </Card>
                     
-                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all p-4">
-                      <TelegramPost channel="Kripme4nik" postId={2} />
-                    </div>
+                    <Card className="group hover:shadow-xl transition-all duration-300 border-2 border-primary/20 hover:border-primary/50 bg-gradient-to-br from-card via-primary/5 to-card overflow-hidden">
+                      <a href="https://t.me/Kripme4nik" target="_blank" rel="noopener noreferrer" className="block p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="p-3 bg-primary/20 rounded-xl group-hover:scale-110 transition-transform">
+                            <Icon name="Target" className="text-primary" size={24} />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Badge variant="default" className="text-xs">
+                                {language === 'ru' ? 'Сигнал' : 'Signal'}
+                              </Badge>
+                              <span className="text-xs text-muted-foreground">
+                                {language === 'ru' ? 'Сегодня' : 'Today'}
+                              </span>
+                            </div>
+                            <h4 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                              {language === 'ru' ? 'Торговый сигнал ETH/USDT' : 'ETH/USDT Trading Signal'}
+                            </h4>
+                            <p className="text-sm text-muted-foreground line-clamp-2">
+                              {language === 'ru' 
+                                ? 'Точка входа, стоп-лосс и тейк-профит для сделки по Ethereum...'
+                                : 'Entry point, stop-loss and take-profit for Ethereum trade...'}
+                            </p>
+                          </div>
+                          <Icon name="ExternalLink" className="text-muted-foreground group-hover:text-primary transition-colors" size={20} />
+                        </div>
+                      </a>
+                    </Card>
                     
-                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all p-4">
-                      <TelegramPost channel="Kripme4nik" postId={3} />
-                    </div>
+                    <Card className="group hover:shadow-xl transition-all duration-300 border-2 border-secondary/20 hover:border-secondary/50 bg-gradient-to-br from-card via-secondary/5 to-card overflow-hidden">
+                      <a href="https://t.me/Kripme4nik" target="_blank" rel="noopener noreferrer" className="block p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="p-3 bg-secondary/20 rounded-xl group-hover:scale-110 transition-transform">
+                            <Icon name="BookOpen" className="text-secondary" size={24} />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Badge variant="outline" className="text-xs">
+                                {language === 'ru' ? 'Обучение' : 'Education'}
+                              </Badge>
+                              <span className="text-xs text-muted-foreground">
+                                {language === 'ru' ? 'Вчера' : 'Yesterday'}
+                              </span>
+                            </div>
+                            <h4 className="font-bold text-lg mb-2 group-hover:text-secondary transition-colors">
+                              {language === 'ru' ? 'Основы свечного анализа' : 'Candlestick Analysis Basics'}
+                            </h4>
+                            <p className="text-sm text-muted-foreground line-clamp-2">
+                              {language === 'ru' 
+                                ? 'Разбираем базовые паттерны японских свечей для начинающих трейдеров...'
+                                : 'Reviewing basic Japanese candlestick patterns for beginner traders...'}
+                            </p>
+                          </div>
+                          <Icon name="ExternalLink" className="text-muted-foreground group-hover:text-secondary transition-colors" size={20} />
+                        </div>
+                      </a>
+                    </Card>
                   </div>
                   
-                  <Card className="p-6 bg-gradient-to-br from-accent/5 to-primary/5 border-2 border-accent/20">
-                    <p className="text-center text-sm text-muted-foreground">
-                      {language === 'ru' 
-                        ? '💡 Посты обновляются автоматически из Telegram-канала'
-                        : '💡 Posts are automatically updated from the Telegram channel'}
-                    </p>
+                  <Card className="p-6 bg-gradient-to-r from-accent/10 via-primary/10 to-secondary/10 border-2 border-accent/30 hover:border-accent/50 transition-all">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="p-3 bg-accent/20 rounded-xl">
+                          <Icon name="Send" className="text-accent" size={24} />
+                        </div>
+                        <div>
+                          <p className="font-bold">
+                            {language === 'ru' ? 'Хочешь больше контента?' : 'Want more content?'}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {language === 'ru' ? 'Подпишись на канал!' : 'Subscribe to the channel!'}
+                          </p>
+                        </div>
+                      </div>
+                      <Button asChild variant="default" className="bg-accent hover:bg-accent/90">
+                        <a href="https://t.me/Kripme4nik" target="_blank" rel="noopener noreferrer">
+                          <Icon name="ArrowRight" size={20} />
+                        </a>
+                      </Button>
+                    </div>
                   </Card>
                 </div>
               </ScrollReveal>
