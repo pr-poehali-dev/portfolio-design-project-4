@@ -812,6 +812,58 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="проект" className="py-24 bg-gradient-to-br from-accent/10 via-primary/5 to-secondary/10 relative z-10">
+        <div className="container mx-auto px-6">
+          <ScrollReveal animation="slide-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-center">
+              {language === 'ru' ? 'Мой проект' : 'My Project'}
+            </h2>
+            <p className="text-xl text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
+              {language === 'ru' ? 'Крипмечник — мой Telegram-канал о криптовалютах и трейдинге' : 'Kripme4nik — my Telegram channel about crypto and trading'}
+            </p>
+          </ScrollReveal>
+          
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal animation="slide-up" delay={100}>
+              <Card className="overflow-hidden border-2 border-accent/30 hover:border-accent/50 transition-all">
+                <div className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="p-4 bg-accent/10 rounded-2xl">
+                      <Icon name="Send" className="text-accent" size={32} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-1">Крипмечник</h3>
+                      <a 
+                        href="https://t.me/Kripme4nik" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-accent hover:underline flex items-center gap-2"
+                      >
+                        @Kripme4nik
+                        <Icon name="ExternalLink" size={16} />
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-muted/50 rounded-2xl p-6 mb-6">
+                    <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="Kripme4nik/1" data-width="100%"></script>
+                  </div>
+                  
+                  <div className="flex justify-center">
+                    <Button size="lg" asChild className="bg-gradient-to-r from-accent to-primary hover:opacity-90 text-white">
+                      <a href="https://t.me/Kripme4nik" target="_blank" rel="noopener noreferrer">
+                        {language === 'ru' ? 'Подписаться на канал' : 'Subscribe to Channel'}
+                        <Icon name="ArrowRight" className="ml-2" size={20} />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       <section id="контакты" className="py-24 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20 relative z-10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
