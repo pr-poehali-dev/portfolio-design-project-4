@@ -10,6 +10,7 @@ import ProjectMockup from '@/components/ProjectMockup';
 import ScrollReveal from '@/components/ScrollReveal';
 import PageLoader from '@/components/PageLoader';
 import AnimatedProgressBar from '@/components/AnimatedProgressBar';
+import TelegramPost from '@/components/TelegramPost';
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -891,16 +892,16 @@ const Index = () => {
                   </h3>
                   
                   <div className="space-y-4">
-                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all">
-                      <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="Kripme4nik/1" data-width="100%"></script>
+                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all p-4">
+                      <TelegramPost channel="Kripme4nik" postId={1} />
                     </div>
                     
-                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all">
-                      <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="Kripme4nik/2" data-width="100%"></script>
+                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all p-4">
+                      <TelegramPost channel="Kripme4nik" postId={2} />
                     </div>
                     
-                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all">
-                      <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="Kripme4nik/3" data-width="100%"></script>
+                    <div className="bg-card rounded-2xl overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all p-4">
+                      <TelegramPost channel="Kripme4nik" postId={3} />
                     </div>
                   </div>
                   
